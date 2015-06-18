@@ -1,0 +1,27 @@
+<html><head><meta charset="utf-8"><link href="../static.css" rel="stylesheet"><title>少年科技人雜誌/2015年8月號/Nand2Tetris第11週--CompilerII:CodeGeneration</title></head><body><header><p><a href="../main/home.html">首頁</a> /  <a href="../ymag/home.html">少年科技人雜誌</a>  / <a href="../ymag201508/home.html">2015年8月號</a> </p></header><main><article><h2 id="nand2tetris11compileriicodegeneration">Nand2Tetris 第 11 週 -- Compiler II: Code Generation</h2>
+
+<p>在第 10 週的課程中，我們學習了如何設計一個剖析器，接著我們可以站在這個基礎上，學習如何設計「程式碼產生器」，這樣就可以完成整個編譯器的程式。</p>
+
+<p>下圖顯示了「剖析器」(語法分析) 與「程式碼產生器」的分工結構，一旦辨認出語法結構後，就可以進行「程式碼產生」的動作。</p>
+
+<div class="figure"><img src="code_gen_example1.jpg"/><p class="caption">本圖來自 http://nand2tetris.org/course.php 第 11 週投影片</p></div>
+
+<p>舉例而言，若有一個 <code>(5+z))/-8)*(4^2)</code> 的運算式，經過剖析後會形成下圖中的語法樹，接著就可以用 codeWrite(exp) 中的程式碼產生規則，產生該運算式的低階程式碼。</p>
+
+<div class="figure"><img src="exp_code_gen_example.jpg"/><p class="caption">本圖來自 http://nand2tetris.org/course.php 第 11 週投影片</p></div>
+
+<p>而對於那些比較複雜的控制邏輯，則必須搭配有條件的跳躍指令才能做到，下圖顯示了 if, while 等語句是如何被轉換成低階程式碼的。</p>
+
+<div class="figure"><img src="if_while_code_gen.jpg"/><p class="caption">本圖來自 http://nand2tetris.org/course.php 第 11 週投影片</p></div>
+
+<p>有了以上這些概念之後，您就掌握了撰寫本週習題的關鍵，可以開始撰寫編譯器中的「程式碼產生器」部分了。</p>
+
+<p>當然，還有很多其他語法我們這裡沒有詳細說明的，您可以進一步參考「第 11 週投影片」的內容，還有以下 havivha 同學的第 11 週作業，以進一步理解完整的實作方法。</p>
+
+<ul>
+<li><a href="https://github.com/havivha/Nand2Tetris/tree/master/11/JackAnalyzer">https://github.com/havivha/Nand2Tetris/tree/master/11/JackAnalyzer</a> </li>
+</ul>
+
+<hr />
+
+<p><center style="font-size:small;color:#888888">本文部份內容與大部份圖片修改自 <a href="http://zh.wikipedia.org/">維基百科</a> ， 使用時請遵守 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 授權。<br/> 編輯：  <a href="#ccc:home">陳鍾誠</a>  email: <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;:&#x63;&#x63;&#99;&#107;&#x6d;i&#x74;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;om">&#x63;&#x63;&#99;&#107;&#x6d;i&#x74;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;om</a></center></p></article></main></body></html>

@@ -1,0 +1,1497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="2015 年 7 月" />
+  <title>程式人雜誌</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../epub.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1>wikidown 電子書</h1>
+</div>
+<div id="content">
+<div id="header">
+<h1 class="title"><a href="http://programmermagazine.github.com/home/">程式人雜誌</a></h1>
+<h2 class="author">2015 年 7 月</h2>
+<h3 class="date">本期焦點：向 Nand2Tetris 學習電腦硬體設計</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#前言">前言</a><ul>
+<li><a href="#編輯小語">編輯小語</a></li>
+<li><a href="#授權聲明">授權聲明</a></li>
+</ul></li>
+<li><a href="#本期焦點向-nand2tetris-學習電腦硬體設計">本期焦點：向 Nand2Tetris 學習電腦硬體設計</a><ul>
+<li><a href="#nand2tetris----教您設計整台電腦的一門課">Nand2Tetris -- 教您設計整台電腦的一門課</a></li>
+<li><a href="#nand2tetris-硬體部份----從邏輯閘到處理器">Nand2Tetris 硬體部份 -- 從邏輯閘到處理器</a></li>
+<li><a href="#nand2tetris-第一週----自製邏輯元件">Nand2Tetris 第一週 -- 自製邏輯元件</a></li>
+<li><a href="#nand2tetris-第二週----自製算術元件">Nand2Tetris 第二週 -- 自製算術元件</a></li>
+<li><a href="#nand2tetris-第三週----自製記憶元件">Nand2Tetris 第三週 -- 自製記憶元件</a></li>
+<li><a href="#nand2tetris-第四週----學習機器語言">Nand2Tetris 第四週 -- 學習機器語言</a></li>
+<li><a href="#nand2tetris-第五週----自製處理器與電腦">Nand2Tetris 第五週 -- 自製處理器與電腦</a></li>
+</ul></li>
+<li><a href="#雜誌訊息">雜誌訊息</a><ul>
+<li><a href="#讀者訂閱">讀者訂閱</a></li>
+<li><a href="#投稿須知">投稿須知</a></li>
+<li><a href="#參與編輯">參與編輯</a></li>
+<li><a href="#公益資訊">公益資訊</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="前言">前言</h1>
+<h2 id="編輯小語">編輯小語</h2>
+<p>最近小編發現了一個很棒的網路公開課，是 coursera 課程網站上的 <a href="https://www.coursera.org/course/nand2tetris1">From Nand to Tetris / Part I</a> 這門課，於是我去修了這門課並作了習題，這是我真正修習的第一門網路公開課。</p>
+<p>這門課程是教授學生如何從一個最基礎的 nand 邏輯閘開始，一路往上建構出所有基礎元件，像是 and, or, xor, not, MUX, DMUX, Adder, Memory 等等，接著建構出 CPU 與整台電腦，然後再學習如何在建構出這台電腦上的『組譯器、編譯器、作業系統』等等，最後在這個具備軟硬體的電腦上寫一個小型的方塊遊戲。</p>
+<p>我覺得這門課非常棒，因此小編將整個修課的過程與心得分享給大家，也利用這個機會將這門『神級課程』介紹給大家認識。</p>
+<p>---- （「少年科技人雜誌」與「程式人雜誌」編輯 - 陳鍾誠）</p>
+<h2 id="授權聲明">授權聲明</h2>
+<p>本雜誌許多資料修改自維基百科，採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 授權，若您想要修改本書產生衍生著作時，至少應該遵守下列授權條件：</p>
+<ol style="list-style-type: decimal">
+<li>標示原作者姓名 (包含該文章作者，若有來自維基百科的部份也請一併標示)。</li>
+<li>採用 創作共用：<a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 的方式公開衍生著作。</li>
+</ol>
+<p>另外、當本雜誌中有文章或素材並非採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/">姓名標示、相同方式分享</a> 時，將會在該文章或素材後面標示其授權，此時該文章將以該標示的方式授權釋出，請修改者注意這些授權標示，以避免產生侵權糾紛。</p>
+<p>例如有些文章可能不希望被作為「商業性使用」，此時就可能會採用創作共用：[姓名標示、非商業性、相同方式分享] 的授權，此時您就不應當將該文章用於商業用途上。</p>
+<p>最後、懇請勿移除公益捐贈的相關描述，以便讓愛心得以持續散播！</p>
+<p>在本期雜誌中，我們還使用了 nand2tetris 課程中的大量習題與程式，這些習題乃是教科書 &quot;The Elements of Computing Systems&quot;, by Nisan and Schocken, MIT Press 的習題，這些習題與程式採用 <a href="../http///www.gnu.org/copyleft/gpl.html.html">GNU GPL (General Public License) 授權</a> ，請務必遵照 GPL 的授權使用這些內容，以避免發生侵權事件。</p>
+<p>另外、本期內容中某些截圖來自 <a href="http://www.nand2tetris.org/course.php">nand2tetris 投影片</a> ，該文件並未聲明採用何種授權，使用時請注意這點，避免侵權。 在此我們僅按著作權法中的合理使用原則，擷取幾張圖片，若您是該作品擁有者且認為此擷取行為不妥，請告訴我們，我們會配合移除。</p>
+<h1 id="本期焦點向-nand2tetris-學習電腦硬體設計">本期焦點：向 Nand2Tetris 學習電腦硬體設計</h1>
+<h2 id="nand2tetris----教您設計整台電腦的一門課">Nand2Tetris -- 教您設計整台電腦的一門課</h2>
+<p>在上個月的『少年科技人雜誌』當中，我紀錄了自己修習 nand2tetris 這門 Coursera 網站上 MOOC 課程的過程，並且試圖將一台電腦從下到上設計所需要的基本知識講述清楚。</p>
+<p>但是、由於 nand2tetris 網站上的 <a href="http://nand2tetris.org/terms.php">下列聲明</a> ，我決定不把自己的作業程式碼刊登出來。</p>
+<pre><code>Code Posting Policy
+We developed this course and made all its materials freely available because we want to help people learn applied computer science on their own terms. We believe that students and self-learners who set out to do the hardware and software projects should have the benefit and challenge of doing original work, without seeing published solutions. 
+
+Therefore, we request that you don&#39;t post solutions publicly on the web, e.g. in blogs or forums. If your course instructor or organizer creates a private space in which work can be shared outside the public domain, that&#39;s fine. Likewise, you can share your work with others using a password-protected space, if it&#39;s permitted by the specific course in which you are enrolled. 
+
+Please use your judgment and help ensure that many more students, like you, will not be denied the thrill of original work and self-discovery. 
+
+Thx � Noam Nisan and Shimon Schocken</code></pre>
+<p>雖然如此，不過網路上已經有不少 nand2tetris 作業的程式碼，您只要 <a href="https://www.google.com.tw/webhp?sourceid=chrome-instant&amp;ion=1&amp;espv=2&amp;ie=UTF-8#q=nand2tetris+github">在 google 中打入　nand2tetris github</a> 就可以找到這些作業了。</p>
+<p>但是，對於程式人而言，有文章卻沒有程式可以對照閱讀，畢竟是個遺憾！</p>
+<p>有鑑於此，我決定將自己在 nand2tetris 的作業改寫，從 nand2tetris 自製的硬體描述語言 HackHDL 改寫為 Verilog ，這樣不僅沒有公佈作業答案，也順便讓大家能夠瞭解如何用真正的硬體描述語言來設計處理器與整台電腦的方法，因此我們決定在本期當中用 Verilog 版的 nand2tetris 來說明電腦硬體的設計原理。</p>
+<p>希望這樣的作法會對想要瞭解電腦硬體設計的程式人會有所幫助！</p>
+<p>現在，就讓我們展開這趟旅程吧！</p>
+<h2 id="nand2tetris-硬體部份----從邏輯閘到處理器">Nand2Tetris 硬體部份 -- 從邏輯閘到處理器</h2>
+<p>在 nand2tetris 的硬體部份，也就是課程 Part I 的作業上面，企圖導引學員從一個 nand 閘開始，一路經過 and, or, not, mux, dmux, adder, ALU, register, memory, CPU 到整台電腦，以便讓學習者能完整的理解一台電腦，並且自己動手實作出來。</p>
+<p>以下是nand2tetris 的硬體部份的作業內容安排。</p>
+<div class="figure">
+<img src="Part1Projects.jpg" alt="圖、nand2tetris 硬體部份的作業內容" /><p class="caption">圖、nand2tetris 硬體部份的作業內容</p>
+</div>
+<p>Nand2tetris 課程中採用的硬體描述語言是課程專用的 HackHDL，其軟體也是為該課程專門設計的 HardEmulator，但是在本期雜誌中，我們將改用 Verilog 來實作。</p>
+<p>如果您想瞭解如何用 HackHDL 實作，您可以參考以下這位修過 nand2tetris 的 havivha 同學在 github 上公佈的作業解答。</p>
+<ul>
+<li><a href="https://github.com/havivha/Nand2Tetris" class="uri">https://github.com/havivha/Nand2Tetris</a></li>
+</ul>
+<p>如果您想要先瞭解 nand2tetrix 課程背後所需要的基本知識，請參考上個月的少年科技人雜誌。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/web/wikidown.html#ymag201506:home">NandToTetrix 慕課記 -- 從邏輯閘到方塊遊戲</a></li>
+</ul>
+<p>如果您想學習 verilog 語法，或者瞭解如何用 verilog 設計其他處理器，也可以參考筆者的下列書籍與網頁。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/co/home.html">陳鍾誠 / 教科書 / 計算機結構</a></li>
+<li><a href="http://ccckmit.wikidot.com/ve:main">免費電子書：Verilog 電路設計</a></li>
+</ul>
+<p>在本期雜誌中，我們將學習如何用 verilog 設計出 nand2tetris 中的處理器 HackCPU 與整台電腦 HackComputer 。</p>
+<p>現在、請跟著我一起重新體會『如何用 Verilog 重新詮釋 nand2tetris 硬體部份的課程』 吧！</p>
+<h2 id="nand2tetris-第一週----自製邏輯元件">Nand2Tetris 第一週 -- 自製邏輯元件</h2>
+<p>我們將第一週的習題主要部份放在 gate.v , gate16.v 與 mux.v 這些 verilog 程式檔中，然後再分別寫測試檔去測試這些程式。</p>
+<p>我們使用的測試工具是 icarus verilog 。</p>
+<h3 id="基本邏輯閘">基本邏輯閘</h3>
+<p>程式模組： gate.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="kw">module</span> Nand(<span class="dt">input</span> a, b, <span class="dt">output</span> out);
+  <span class="dt">nand</span> g1(out, a, b);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Not(<span class="dt">input</span> in, <span class="dt">output</span> out);
+  Nand g1(in, in, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Or(<span class="dt">input</span> a, b, <span class="dt">output</span> out);
+  Not g1(a, nota);
+  Not g2(b, notb);
+  Nand g3(nota, notb, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Xor(<span class="dt">input</span> a, b, <span class="dt">output</span> out);
+  Nand g1(a, b, AnandB);
+  Or   g2(a, b, AorB);
+  And  g3(AnandB, AorB, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> And(<span class="dt">input</span> a, b, <span class="dt">output</span> out);
+  Nand g1(a, b, AnandB);
+  Nand g2(AnandB, AnandB, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Or8Way(<span class="dt">input</span>[<span class="dv">7</span>:<span class="dv">0</span>] in, <span class="dt">output</span> out);
+  Or g1(in[<span class="dv">7</span>], in[<span class="dv">6</span>], or76);
+  Or g2(in[<span class="dv">5</span>], in[<span class="dv">4</span>], or54);
+  Or g3(in[<span class="dv">3</span>], in[<span class="dv">2</span>], or32);
+  Or g4(in[<span class="dv">1</span>], in[<span class="dv">0</span>], or10);
+  Or g5(or76, or54, or74);
+  Or g6(or32, or10, or30);
+  Or g7(or74, or30, out);
+<span class="kw">endmodule</span></code></pre>
+<p>測試程式： gate_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;gate.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span> a, b;
+<span class="dt">wire</span> abNand, aNot, abAnd, abOr, abXor;
+
+Not  g1(a, aNot);
+Nand g2(a, b, abNand);
+And  g3(a, b, abAnd);
+Or   g4(a, b, abOr);
+Xor  g5(a, b, abXor);
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  <span class="dt">$monitor</span>(<span class="st">&quot;%4dns a=%d b=%d aNot=%d abNand=%d abAnd=%d abOr=%d abXor=%d&quot;</span>, <span class="dt">$stime</span>, a, b, aNot, abNand, abAnd, abOr, abXor);
+  a  = <span class="dv">0</span>;
+  b  = <span class="dv">0</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#50</span> <span class="kw">begin</span>
+  a = a<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#100</span> <span class="kw">begin</span>
+  b = b<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">initial</span> <span class="bn">#500</span> <span class="dt">$finish</span>;
+
+<span class="kw">endmodule</span></code></pre>
+<p>測試結果</p>
+<pre><code>D:\Dropbox\cccweb\db\n2t&gt;iverilog gate_test.v -o gate_test
+
+D:\Dropbox\cccweb\db\n2t&gt;vvp gate_test
+   0ns a=0 b=0 aNot=1 abNand=1 abAnd=0 abOr=0 abXor=0
+  50ns a=1 b=0 aNot=0 abNand=1 abAnd=0 abOr=1 abXor=1
+ 100ns a=0 b=1 aNot=1 abNand=1 abAnd=0 abOr=1 abXor=1
+ 150ns a=1 b=1 aNot=0 abNand=0 abAnd=1 abOr=1 abXor=0
+ 200ns a=0 b=0 aNot=1 abNand=1 abAnd=0 abOr=0 abXor=0
+ 250ns a=1 b=0 aNot=0 abNand=1 abAnd=0 abOr=1 abXor=1
+ 300ns a=0 b=1 aNot=1 abNand=1 abAnd=0 abOr=1 abXor=1
+ 350ns a=1 b=1 aNot=0 abNand=0 abAnd=1 abOr=1 abXor=0
+ 400ns a=0 b=0 aNot=1 abNand=1 abAnd=0 abOr=0 abXor=0
+ 450ns a=1 b=0 aNot=0 abNand=1 abAnd=0 abOr=1 abXor=1
+ 500ns a=0 b=1 aNot=1 abNand=1 abAnd=0 abOr=1 abXor=1</code></pre>
+<h3 id="位元邏輯閘">16 位元邏輯閘</h3>
+<p>程式模組： gate16.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;gate.v&quot;</span>
+
+<span class="kw">module</span> Not16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  Not g15(in[<span class="dv">15</span>], out[<span class="dv">15</span>]);
+  Not g14(in[<span class="dv">14</span>], out[<span class="dv">14</span>]);
+  Not g13(in[<span class="dv">13</span>], out[<span class="dv">13</span>]);
+  Not g12(in[<span class="dv">12</span>], out[<span class="dv">12</span>]);
+  Not g11(in[<span class="dv">11</span>], out[<span class="dv">11</span>]);
+  Not g10(in[<span class="dv">10</span>], out[<span class="dv">10</span>]);
+  Not g09(in[<span class="dv">9</span>], out[<span class="dv">9</span>]);
+  Not g08(in[<span class="dv">8</span>], out[<span class="dv">8</span>]);
+  Not g07(in[<span class="dv">7</span>], out[<span class="dv">7</span>]);
+  Not g06(in[<span class="dv">6</span>], out[<span class="dv">6</span>]);
+  Not g05(in[<span class="dv">5</span>], out[<span class="dv">5</span>]);
+  Not g04(in[<span class="dv">4</span>], out[<span class="dv">4</span>]);
+  Not g03(in[<span class="dv">3</span>], out[<span class="dv">3</span>]);
+  Not g02(in[<span class="dv">2</span>], out[<span class="dv">2</span>]);
+  Not g01(in[<span class="dv">1</span>], out[<span class="dv">1</span>]);
+  Not g00(in[<span class="dv">0</span>], out[<span class="dv">0</span>]);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> And16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] a, b, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  And g15(a[<span class="dv">15</span>], b[<span class="dv">15</span>], out[<span class="dv">15</span>]);
+  And g14(a[<span class="dv">14</span>], b[<span class="dv">14</span>], out[<span class="dv">14</span>]);
+  And g13(a[<span class="dv">13</span>], b[<span class="dv">13</span>], out[<span class="dv">13</span>]);
+  And g12(a[<span class="dv">12</span>], b[<span class="dv">12</span>], out[<span class="dv">12</span>]);
+  And g11(a[<span class="dv">11</span>], b[<span class="dv">11</span>], out[<span class="dv">11</span>]);
+  And g10(a[<span class="dv">10</span>], b[<span class="dv">10</span>], out[<span class="dv">10</span>]);
+  And g09(a[<span class="dv">9</span>], b[<span class="dv">9</span>], out[<span class="dv">9</span>]);
+  And g08(a[<span class="dv">8</span>], b[<span class="dv">8</span>], out[<span class="dv">8</span>]);
+  And g07(a[<span class="dv">7</span>], b[<span class="dv">7</span>], out[<span class="dv">7</span>]);
+  And g06(a[<span class="dv">6</span>], b[<span class="dv">6</span>], out[<span class="dv">6</span>]);
+  And g05(a[<span class="dv">5</span>], b[<span class="dv">5</span>], out[<span class="dv">5</span>]);
+  And g04(a[<span class="dv">4</span>], b[<span class="dv">4</span>], out[<span class="dv">4</span>]);
+  And g03(a[<span class="dv">3</span>], b[<span class="dv">3</span>], out[<span class="dv">3</span>]);
+  And g02(a[<span class="dv">2</span>], b[<span class="dv">2</span>], out[<span class="dv">2</span>]);
+  And g01(a[<span class="dv">1</span>], b[<span class="dv">1</span>], out[<span class="dv">1</span>]);
+  And g00(a[<span class="dv">0</span>], b[<span class="dv">0</span>], out[<span class="dv">0</span>]);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Or16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] a, b, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  Or g15(a[<span class="dv">15</span>], b[<span class="dv">15</span>], out[<span class="dv">15</span>]);
+  Or g14(a[<span class="dv">14</span>], b[<span class="dv">14</span>], out[<span class="dv">14</span>]);
+  Or g13(a[<span class="dv">13</span>], b[<span class="dv">13</span>], out[<span class="dv">13</span>]);
+  Or g12(a[<span class="dv">12</span>], b[<span class="dv">12</span>], out[<span class="dv">12</span>]);
+  Or g11(a[<span class="dv">11</span>], b[<span class="dv">11</span>], out[<span class="dv">11</span>]);
+  Or g10(a[<span class="dv">10</span>], b[<span class="dv">10</span>], out[<span class="dv">10</span>]);
+  Or g09(a[<span class="dv">9</span>], b[<span class="dv">9</span>], out[<span class="dv">9</span>]);
+  Or g08(a[<span class="dv">8</span>], b[<span class="dv">8</span>], out[<span class="dv">8</span>]);
+  Or g07(a[<span class="dv">7</span>], b[<span class="dv">7</span>], out[<span class="dv">7</span>]);
+  Or g06(a[<span class="dv">6</span>], b[<span class="dv">6</span>], out[<span class="dv">6</span>]);
+  Or g05(a[<span class="dv">5</span>], b[<span class="dv">5</span>], out[<span class="dv">5</span>]);
+  Or g04(a[<span class="dv">4</span>], b[<span class="dv">4</span>], out[<span class="dv">4</span>]);
+  Or g03(a[<span class="dv">3</span>], b[<span class="dv">3</span>], out[<span class="dv">3</span>]);
+  Or g02(a[<span class="dv">2</span>], b[<span class="dv">2</span>], out[<span class="dv">2</span>]);
+  Or g01(a[<span class="dv">1</span>], b[<span class="dv">1</span>], out[<span class="dv">1</span>]);
+  Or g00(a[<span class="dv">0</span>], b[<span class="dv">0</span>], out[<span class="dv">0</span>]);
+<span class="kw">endmodule</span></code></pre>
+<p>測試程式： gate16_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;gate16.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span>  [<span class="dv">15</span>:<span class="dv">0</span>] a,b;
+<span class="dt">wire</span> [<span class="dv">15</span>:<span class="dv">0</span>] aNot, abAnd, abOr;
+
+Not16  g1(a, aNot);
+And16  g2(a, b, abAnd);
+Or16   g3(a, b, abOr);
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  <span class="dt">$monitor</span>(<span class="st">&quot;a  =%b</span><span class="ch">\n</span><span class="st">b  =%b</span><span class="ch">\n</span><span class="st">not=%b</span><span class="ch">\n</span><span class="st">and=%b</span><span class="ch">\n</span><span class="st">or =%b&quot;</span>, a, b, aNot, abAnd, abOr);
+  a  = <span class="bn">16&#39;b0011</span>;
+  b  = <span class="bn">16&#39;b0101</span>;
+    <span class="dt">$finish</span>;
+<span class="kw">end</span>
+
+<span class="kw">endmodule</span></code></pre>
+<p>測試結果</p>
+<pre><code>D:\Dropbox\cccweb\db\n2t&gt;iverilog gate16_test.v -o gate16_test
+
+D:\Dropbox\cccweb\db\n2t&gt;vvp gate16_test
+a  =0000000000000011
+b  =0000000000000101
+not=1111111111111100
+and=0000000000000001
+or =0000000000000111</code></pre>
+<h3 id="多工器與解多工器-mux-and-dmux">多工器與解多工器 (MUX and DMUX)</h3>
+<p>程式模組： mux.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;gate16.v&quot;</span>
+
+<span class="kw">module</span> Mux(<span class="dt">input</span> a, b, sel, <span class="dt">output</span> out);
+  Not g1(sel, nsel);
+  And g2(a, nsel, o1);
+  And g3(b, sel, o2);
+  Or  g4(o1, o2, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> DMux(<span class="dt">input</span> in, sel, <span class="dt">output</span> a, b);
+  Not g1(sel, nsel);
+  And g2(nsel, in, a);
+  And g3(sel,  in, b);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Mux16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] a, b, <span class="dt">input</span> sel, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  Mux g15(a[<span class="dv">15</span>], b[<span class="dv">15</span>], sel, out[<span class="dv">15</span>]);
+  Mux g14(a[<span class="dv">14</span>], b[<span class="dv">14</span>], sel, out[<span class="dv">14</span>]);
+  Mux g13(a[<span class="dv">13</span>], b[<span class="dv">13</span>], sel, out[<span class="dv">13</span>]);
+  Mux g12(a[<span class="dv">12</span>], b[<span class="dv">12</span>], sel, out[<span class="dv">12</span>]);
+  Mux g11(a[<span class="dv">11</span>], b[<span class="dv">11</span>], sel, out[<span class="dv">11</span>]);
+  Mux g10(a[<span class="dv">10</span>], b[<span class="dv">10</span>], sel, out[<span class="dv">10</span>]);
+  Mux g09(a[<span class="dv">9</span>],  b[<span class="dv">9</span>],  sel, out[<span class="dv">9</span>]);
+  Mux g08(a[<span class="dv">8</span>],  b[<span class="dv">8</span>],  sel, out[<span class="dv">8</span>]);
+  Mux g07(a[<span class="dv">7</span>],  b[<span class="dv">7</span>],  sel, out[<span class="dv">7</span>]);
+  Mux g06(a[<span class="dv">6</span>],  b[<span class="dv">6</span>],  sel, out[<span class="dv">6</span>]);
+  Mux g05(a[<span class="dv">5</span>],  b[<span class="dv">5</span>],  sel, out[<span class="dv">5</span>]);
+  Mux g04(a[<span class="dv">4</span>],  b[<span class="dv">4</span>],  sel, out[<span class="dv">4</span>]);
+  Mux g03(a[<span class="dv">3</span>],  b[<span class="dv">3</span>],  sel, out[<span class="dv">3</span>]);
+  Mux g02(a[<span class="dv">2</span>],  b[<span class="dv">2</span>],  sel, out[<span class="dv">2</span>]);
+  Mux g01(a[<span class="dv">1</span>],  b[<span class="dv">1</span>],  sel, out[<span class="dv">1</span>]);
+  Mux g00(a[<span class="dv">0</span>],  b[<span class="dv">0</span>],  sel, out[<span class="dv">0</span>]);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Mux4Way16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] a,b,c,d, <span class="dt">input</span>[<span class="dv">1</span>:<span class="dv">0</span>] sel, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span> [<span class="dv">15</span>:<span class="dv">0</span>] outab, outcd;
+  Mux16 g1(a, b, sel[<span class="dv">0</span>], outab);
+  Mux16 g2(c, d, sel[<span class="dv">0</span>], outcd);
+  Mux16 g3(outab, outcd, sel[<span class="dv">1</span>], out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Mux8Way16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] a,b,c,d,e,f,g,h, <span class="dt">input</span>[<span class="dv">2</span>:<span class="dv">0</span>] sel, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span> [<span class="dv">15</span>:<span class="dv">0</span>] outad, outeh;
+  Mux4Way16 g1(a, b, c, d, sel[<span class="dv">1</span>:<span class="dv">0</span>], outad);
+  Mux4Way16 g2(e, f, g, h, sel[<span class="dv">1</span>:<span class="dv">0</span>], outeh);
+  Mux16     g3(outad, outeh, sel[<span class="dv">2</span>], out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> DMux4Way(<span class="dt">input</span> in, <span class="dt">input</span>[<span class="dv">1</span>:<span class="dv">0</span>] sel, <span class="dt">output</span> a,b,c,d);
+  Not  g1(sel[<span class="dv">1</span>], nsel1);
+  Not  g2(sel[<span class="dv">0</span>], nsel0);
+  And  g3(nsel1,  nsel0,  sel00);
+  And  g4(nsel1,  sel[<span class="dv">0</span>], sel01);
+  And  g5(sel[<span class="dv">1</span>], nsel0,  sel10);
+  And  g6(sel[<span class="dv">1</span>], sel[<span class="dv">0</span>], sel11);
+  DMux g7(in, sel00, d0, a);
+  DMux g8(in, sel01, d1, b);
+  DMux g9(in, sel11, d2, d);
+  DMux g10(in, sel10, d3, c);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> DMux8Way(<span class="dt">input</span> in, <span class="dt">input</span>[<span class="dv">2</span>:<span class="dv">0</span>] sel, <span class="dt">output</span> a,b,c,d,e,f,g,h);
+  Not g1(sel[<span class="dv">2</span>], nsel2);
+  And g2(in, sel[<span class="dv">2</span>], s2h);
+  And g3(in, nsel2,  s2l);
+  DMux4Way g4(s2h, sel[<span class="dv">1</span>:<span class="dv">0</span>], e, f, g, h);
+  DMux4Way g5(s2l, sel[<span class="dv">1</span>:<span class="dv">0</span>], a, b, c, d);
+<span class="kw">endmodule</span></code></pre>
+<p>測試程式： mux_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;mux.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span>[<span class="dv">15</span>:<span class="dv">0</span>] a, b, c, d, e, f, g, h;
+<span class="dt">reg</span>[<span class="dv">2</span>:<span class="dv">0</span>]  sel;
+<span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] mux2, mux4, mux8;
+<span class="dt">wire</span> mux01, dmux0, dmux1;
+
+Mux       g1(<span class="bn">1&#39;b0</span>, <span class="bn">1&#39;b1</span>, sel[<span class="dv">2</span>], mux01);
+DMux      g2(a[<span class="dv">0</span>], sel[<span class="dv">2</span>], dmux0, dmux1);
+Mux16     g4(a, b, sel[<span class="dv">0</span>], mux2);
+Mux4Way16 g5(a, b, c, d, sel[<span class="dv">1</span>:<span class="dv">0</span>], mux4);
+Mux8Way16 g6(a, b, c, d, e, f, g, h, sel[<span class="dv">2</span>:<span class="dv">0</span>], mux8);
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  <span class="dt">$monitor</span>(<span class="st">&quot;%4dns sel=%d mux2=%x mux4=%x mux8=%x&quot;</span>, <span class="dt">$stime</span>, sel, mux2, mux4, mux8);
+  a  = <span class="bn">16&#39;h0</span>;
+  b  = <span class="bn">16&#39;h1</span>;
+  c  = <span class="bn">16&#39;h2</span>;
+  d  = <span class="bn">16&#39;h3</span>;
+  e  = <span class="bn">16&#39;h4</span>;
+  f  = <span class="bn">16&#39;h5</span>;
+  g  = <span class="bn">16&#39;h6</span>;
+  h  = <span class="bn">16&#39;h7</span>;
+    sel = <span class="dv">0</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#50</span> <span class="kw">begin</span>
+  sel=sel<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">initial</span> <span class="bn">#500</span> <span class="dt">$finish</span>;
+
+<span class="kw">endmodule</span></code></pre>
+<p>測試結果</p>
+<pre><code>D:\Dropbox\cccweb\db\n2t&gt;iverilog mux_test.v -o mux_test
+
+D:\Dropbox\cccweb\db\n2t&gt;vvp mux_test
+   0ns sel=0 mux2=0000 mux4=0000 mux8=0000
+  50ns sel=1 mux2=0001 mux4=0001 mux8=0001
+ 100ns sel=2 mux2=0000 mux4=0002 mux8=0002
+ 150ns sel=3 mux2=0001 mux4=0003 mux8=0003
+ 200ns sel=4 mux2=0000 mux4=0000 mux8=0004
+ 250ns sel=5 mux2=0001 mux4=0001 mux8=0005
+ 300ns sel=6 mux2=0000 mux4=0002 mux8=0006
+ 350ns sel=7 mux2=0001 mux4=0003 mux8=0007
+ 400ns sel=0 mux2=0000 mux4=0000 mux8=0000
+ 450ns sel=1 mux2=0001 mux4=0001 mux8=0001
+ 500ns sel=2 mux2=0000 mux4=0002 mux8=0002</code></pre>
+<h3 id="結語">結語</h3>
+<p>這些閘的設計並不太困難，原理部份請參考下列文章或數位邏輯教科書。</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201506/focus3.html">少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第 1 週 -- 布林函數</a></li>
+</ul>
+<h2 id="nand2tetris-第二週----自製算術元件">Nand2Tetris 第二週 -- 自製算術元件</h2>
+<p>算術元件部份包含『半加器、全加器、16位元加法器與 ALU 等等』，我們的 verilog 版模組與測試程式如下所示。</p>
+<p>程式模組： alu.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;mux.v&quot;</span>
+
+<span class="kw">module</span> HalfAdder(<span class="dt">input</span> a,b, <span class="dt">output</span> sum, carry);
+  Xor g1(a, b, sum);
+  And g2(a, b, carry);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> FullAdder(<span class="dt">input</span> a,b,c, <span class="dt">output</span> sum, carry);
+  <span class="dt">wire</span> s1, c1, c2;
+  Xor g1(a,  b,  s1);
+  Xor g2(s1, c,  sum);
+  And g3(a,  b,  c1);
+  And g4(s1, c,  c2);
+  Xor g5(c2, c1, carry);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Add16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] a,b, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span> [<span class="dv">15</span>:<span class="dv">0</span>] c;
+  FullAdder g01(a[<span class="dv">0</span>],  b[<span class="dv">0</span>],  <span class="bn">1&#39;b0</span>,  out[<span class="dv">0</span>],  c[<span class="dv">0</span>]);
+  FullAdder g02(a[<span class="dv">1</span>],  b[<span class="dv">1</span>],  c[<span class="dv">0</span>],  out[<span class="dv">1</span>],  c[<span class="dv">1</span>]);
+  FullAdder g03(a[<span class="dv">2</span>],  b[<span class="dv">2</span>],  c[<span class="dv">1</span>],  out[<span class="dv">2</span>],  c[<span class="dv">2</span>]);
+  FullAdder g04(a[<span class="dv">3</span>],  b[<span class="dv">3</span>],  c[<span class="dv">2</span>],  out[<span class="dv">3</span>],  c[<span class="dv">3</span>]);
+  FullAdder g05(a[<span class="dv">4</span>],  b[<span class="dv">4</span>],  c[<span class="dv">3</span>],  out[<span class="dv">4</span>],  c[<span class="dv">4</span>]);
+  FullAdder g06(a[<span class="dv">5</span>],  b[<span class="dv">5</span>],  c[<span class="dv">4</span>],  out[<span class="dv">5</span>],  c[<span class="dv">5</span>]);
+  FullAdder g07(a[<span class="dv">6</span>],  b[<span class="dv">6</span>],  c[<span class="dv">5</span>],  out[<span class="dv">6</span>],  c[<span class="dv">6</span>]);
+  FullAdder g08(a[<span class="dv">7</span>],  b[<span class="dv">7</span>],  c[<span class="dv">6</span>],  out[<span class="dv">7</span>],  c[<span class="dv">7</span>]);
+  FullAdder g09(a[<span class="dv">8</span>],  b[<span class="dv">8</span>],  c[<span class="dv">7</span>],  out[<span class="dv">8</span>],  c[<span class="dv">8</span>]);
+  FullAdder g10(a[<span class="dv">9</span>],  b[<span class="dv">9</span>],  c[<span class="dv">8</span>],  out[<span class="dv">9</span>],  c[<span class="dv">9</span>]);
+  FullAdder g11(a[<span class="dv">10</span>], b[<span class="dv">10</span>], c[<span class="dv">9</span>],  out[<span class="dv">10</span>], c[<span class="dv">10</span>]);  
+  FullAdder g12(a[<span class="dv">11</span>], b[<span class="dv">11</span>], c[<span class="dv">10</span>], out[<span class="dv">11</span>], c[<span class="dv">11</span>]);   
+  FullAdder g13(a[<span class="dv">12</span>], b[<span class="dv">12</span>], c[<span class="dv">11</span>], out[<span class="dv">12</span>], c[<span class="dv">12</span>]);   
+  FullAdder g14(a[<span class="dv">13</span>], b[<span class="dv">13</span>], c[<span class="dv">12</span>], out[<span class="dv">13</span>], c[<span class="dv">13</span>]);   
+  FullAdder g15(a[<span class="dv">14</span>], b[<span class="dv">14</span>], c[<span class="dv">13</span>], out[<span class="dv">14</span>], c[<span class="dv">14</span>]);   
+  FullAdder g16(a[<span class="dv">15</span>], b[<span class="dv">15</span>], c[<span class="dv">14</span>], out[<span class="dv">15</span>], c[<span class="dv">15</span>]);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Inc16(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  Add16 g1(in, <span class="bn">16&#39;h1</span>, out);
+<span class="kw">endmodule</span>
+
+<span class="co">//  x[16], y[16],  // 16-bit inputs  </span>
+<span class="co">//  zx, // zero the x input?</span>
+<span class="co">//  nx, // negate the x input?</span>
+<span class="co">//  zy, // zero the y input?</span>
+<span class="co">//  ny, // negate the y input?</span>
+<span class="co">//  f,  // compute out = x + y (if 1) or x &amp; y (if 0)</span>
+<span class="co">//  no; // negate the out output?</span>
+<span class="co">//  out[16], zr, ng;  // zr:zero, ng:negative</span>
+
+<span class="kw">module</span> ALU(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] x, y, <span class="dt">input</span> zx,nx,zy,ny,f,no, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out, <span class="dt">output</span> zr, ng);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] x1, notx1, x2, y1, noty1, y2, andxy, addxy, o1, noto1, o2;
+    <span class="dt">wire</span> orLow, orHigh, notzr;
+    
+  Mux16 g1(x,  <span class="bn">16&#39;b0</span>, zx, x1);   <span class="co">// if (zx == 1) set x = 0  </span>
+  Not16 g2(x1, notx1);
+  Mux16 g3(x1, notx1, nx, x2);   <span class="co">// if (nx == 1) set x = !x</span>
+  
+  Mux16 g4(y,  <span class="bn">16&#39;b0</span>, zy, y1);   <span class="co">// if (zy == 1) set y = 0</span>
+  Not16 g5(y1, noty1);
+  Mux16 g6(y1, noty1, ny, y2);   <span class="co">// if (ny == 1) set y = !y</span>
+  
+  Add16 g7(x2, y2, addxy);       <span class="co">// addxy = x + y</span>
+  And16 g8(x2, y2, andxy);       <span class="co">// andxy = x &amp; y</span>
+  
+  Mux16 g9(andxy, addxy, f, o1); <span class="co">// if (f == 1)  set out = x + y else set out = x &amp; y</span>
+  Not16 g10(o1, noto1);
+  
+  Mux16 g11(o1, noto1, no, o2);   <span class="co">// if (no == 1) set out = !out</span>
+  
+  <span class="co">// o2 就是 out, 但必須中間節點才能再次當作輸入，所以先用 o2。</span>
+  And16 g12(o2, o2, out); 
+  Or8Way g13(out[<span class="dv">7</span>:<span class="dv">0</span>],  orLow);  <span class="co">// orLow = Or(out[0..7]);</span>
+  Or8Way g14(out[<span class="dv">15</span>:<span class="dv">8</span>], orHigh);<span class="co">// orHigh = Or(out[8..15]);</span>
+  Or    g15(orLow, orHigh, notzr);  <span class="co">// nzr = Or(out[0..15]);</span>
+  Not   g16(notzr, zr);            <span class="co">// zr = !nzr</span>
+  And   g17(o2[<span class="dv">15</span>], o2[<span class="dv">15</span>], ng);   <span class="co">// ng = out[15]</span>
+  And16 g18(o2, o2, out);
+<span class="kw">endmodule</span></code></pre>
+<p>測試程式： gate_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;alu.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span> <span class="dt">signed</span>[<span class="dv">15</span>:<span class="dv">0</span>] x, y;
+<span class="dt">reg</span> zx,nx,zy,ny,f,no;
+<span class="dt">wire</span> <span class="dt">signed</span>[<span class="dv">15</span>:<span class="dv">0</span>] out;
+<span class="dt">wire</span> zr, ng;
+
+ALU alu1(x,y, zx,nx,zy,ny,f,no, out, zr,ng);
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  <span class="dt">$monitor</span>(<span class="st">&quot;%4dns x=%d y=%d zx=%b nx=%b zy=%b ny=%b f=%b no=%b out=%d zr=%b ng=%b&quot;</span>, <span class="dt">$stime</span>, x, y, zx, nx, zy, ny, f, no, out, zr, ng);
+    x = <span class="dv">9</span>;
+    y = <span class="dv">15</span>;
+    zx = <span class="dv">0</span>;
+    nx = <span class="dv">0</span>;
+    zy = <span class="dv">0</span>;
+    ny = <span class="dv">0</span>;
+    f  = <span class="dv">0</span>;
+    no = <span class="dv">0</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#320</span> <span class="kw">begin</span>
+  zx = zx<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#160</span> <span class="kw">begin</span>
+  nx = nx<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#80</span> <span class="kw">begin</span>
+  zy = zy<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#40</span> <span class="kw">begin</span>
+  ny = ny<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#20</span> <span class="kw">begin</span>
+  f = f<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#10</span> <span class="kw">begin</span>
+  no = no<span class="dv">+1</span>;
+<span class="kw">end</span>
+
+<span class="kw">initial</span> <span class="bn">#640</span> <span class="dt">$finish</span>;
+
+<span class="kw">endmodule</span></code></pre>
+<p>測試結果</p>
+<pre><code>D:\Dropbox\cccweb\db\n2t&gt;iverilog alu_test.v -o alu_test
+
+D:\Dropbox\cccweb\db\n2t&gt;vvp alu_test
+   0ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=0 no=0 out=     9 zr=0 ng=0
+  10ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=0 no=1 out=   -10 zr=0 ng=1
+  20ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=1 no=0 out=    24 zr=0 ng=0
+  30ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=1 no=1 out=   -25 zr=0 ng=1
+  40ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=0 no=0 out=     0 zr=1 ng=0
+  50ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=0 no=1 out=    -1 zr=0 ng=1
+  60ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=1 no=0 out=    -7 zr=0 ng=1
+  70ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=1 f=1 no=1 out=     6 zr=0 ng=0
+  80ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+  90ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 100ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=1 no=0 out=     9 zr=0 ng=0
+ 110ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=0 f=1 no=1 out=   -10 zr=0 ng=1
+ 120ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=0 no=0 out=     9 zr=0 ng=0
+ 130ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=0 no=1 out=   -10 zr=0 ng=1
+ 140ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=1 no=0 out=     8 zr=0 ng=0
+ 150ns x=     9 y=    15 zx=0 nx=0 zy=1 ny=1 f=1 no=1 out=    -9 zr=0 ng=1
+ 160ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=0 no=0 out=     6 zr=0 ng=0
+ 170ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=0 no=1 out=    -7 zr=0 ng=1
+ 180ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=1 no=0 out=     5 zr=0 ng=0
+ 190ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=0 f=1 no=1 out=    -6 zr=0 ng=1
+ 200ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=0 no=0 out=   -16 zr=0 ng=1
+ 210ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=0 no=1 out=    15 zr=0 ng=0
+ 220ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=1 no=0 out=   -26 zr=0 ng=1
+ 230ns x=     9 y=    15 zx=0 nx=1 zy=0 ny=1 f=1 no=1 out=    25 zr=0 ng=0
+ 240ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 250ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 260ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=1 no=0 out=   -10 zr=0 ng=1
+ 270ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=0 f=1 no=1 out=     9 zr=0 ng=0
+ 280ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=0 no=0 out=   -10 zr=0 ng=1
+ 290ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=0 no=1 out=     9 zr=0 ng=0
+ 300ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=1 no=0 out=   -11 zr=0 ng=1
+ 310ns x=     9 y=    15 zx=0 nx=1 zy=1 ny=1 f=1 no=1 out=    10 zr=0 ng=0
+ 320ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 330ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 340ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=1 no=0 out=    15 zr=0 ng=0
+ 350ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=0 f=1 no=1 out=   -16 zr=0 ng=1
+ 360ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=0 no=0 out=     0 zr=1 ng=0
+ 370ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=0 no=1 out=    -1 zr=0 ng=1
+ 380ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=1 no=0 out=   -16 zr=0 ng=1
+ 390ns x=     9 y=    15 zx=1 nx=0 zy=0 ny=1 f=1 no=1 out=    15 zr=0 ng=0
+ 400ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 410ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 420ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=1 no=0 out=     0 zr=1 ng=0
+ 430ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=0 f=1 no=1 out=    -1 zr=0 ng=1
+ 440ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=0 no=0 out=     0 zr=1 ng=0
+ 450ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=0 no=1 out=    -1 zr=0 ng=1
+ 460ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=1 no=0 out=    -1 zr=0 ng=1
+ 470ns x=     9 y=    15 zx=1 nx=0 zy=1 ny=1 f=1 no=1 out=     0 zr=1 ng=0
+ 480ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=0 no=0 out=    15 zr=0 ng=0
+ 490ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=0 no=1 out=   -16 zr=0 ng=1
+ 500ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=1 no=0 out=    14 zr=0 ng=0
+ 510ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=0 f=1 no=1 out=   -15 zr=0 ng=1
+ 520ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=0 no=0 out=   -16 zr=0 ng=1
+ 530ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=0 no=1 out=    15 zr=0 ng=0
+ 540ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=1 no=0 out=   -17 zr=0 ng=1
+ 550ns x=     9 y=    15 zx=1 nx=1 zy=0 ny=1 f=1 no=1 out=    16 zr=0 ng=0
+ 560ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=0 no=0 out=     0 zr=1 ng=0
+ 570ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=0 no=1 out=    -1 zr=0 ng=1
+ 580ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=1 no=0 out=    -1 zr=0 ng=1
+ 590ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=0 f=1 no=1 out=     0 zr=1 ng=0
+ 600ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=0 no=0 out=    -1 zr=0 ng=1
+ 610ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=0 no=1 out=     0 zr=1 ng=0
+ 620ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=1 no=0 out=    -2 zr=0 ng=1
+ 630ns x=     9 y=    15 zx=1 nx=1 zy=1 ny=1 f=1 no=1 out=     1 zr=0 ng=0
+ 640ns x=     9 y=    15 zx=0 nx=0 zy=0 ny=0 f=0 no=0 out=     9 zr=0 ng=0
+</code></pre>
+<h3 id="結語-1">結語</h3>
+<p>算術邏輯單元的原理請參考下列文件：</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201506/focus4.html">少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第二週 -- 布林算術</a></li>
+</ul>
+<h2 id="nand2tetris-第三週----自製記憶元件">Nand2Tetris 第三週 -- 自製記憶元件</h2>
+<p>記憶元件部份包含『單位元記憶、16位元暫存器、程式計數器 PC、RAM、ROM』等等，我們的 verilog 版模組與測試程式如下所示。</p>
+<p>程式模組： memory.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="co">/* nand2tetris 的要求應該用下列方式實作，但是由於這樣元件太多會導致 icarus 編譯失敗，</span>
+<span class="co">出現下列訊息：</span>
+
+<span class="co">D:\Dropbox\cccweb\db\n2t&gt;iverilog ram_test.v -o ram_test</span>
+
+<span class="co">This application has requested the Runtime to terminate it in an unusual way.</span>
+<span class="co">Please contact the application&#39;s support team for more information.</span>
+
+<span class="co">所以我們在記憶體容量大的時候改用 verilog 的陣列型寫法，這樣就不會當機了。 */</span>
+<span class="ot">`include </span><span class="fl">&quot;alu.v&quot;</span>
+
+<span class="kw">module</span> DFF (<span class="dt">input</span> in, clock, load, <span class="dt">output</span> out);
+  <span class="dt">reg</span> q;
+    <span class="kw">assign</span> out = q;
+  <span class="kw">always</span> @(<span class="kw">posedge</span> clock) <span class="kw">begin</span>
+      <span class="kw">if</span> (load) q = in;
+  <span class="kw">end</span>
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Bit(<span class="dt">input</span> in, clock, load, <span class="dt">output</span> out);
+    DFF dff1(in, clock, load, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Register(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  Bit g01(in[<span class="dv">15</span>], clock, load, out[<span class="dv">15</span>]);
+  Bit g02(in[<span class="dv">14</span>], clock, load, out[<span class="dv">14</span>]);
+  Bit g03(in[<span class="dv">13</span>], clock, load, out[<span class="dv">13</span>]);
+  Bit g04(in[<span class="dv">12</span>], clock, load, out[<span class="dv">12</span>]);
+  Bit g05(in[<span class="dv">11</span>], clock, load, out[<span class="dv">11</span>]);
+  Bit g06(in[<span class="dv">10</span>], clock, load, out[<span class="dv">10</span>]);
+  Bit g07(in[<span class="dv">9</span>],  clock, load, out[<span class="dv">9</span>]);
+  Bit g08(in[<span class="dv">8</span>],  clock, load, out[<span class="dv">8</span>]);
+  Bit g09(in[<span class="dv">7</span>],  clock, load, out[<span class="dv">7</span>]);
+  Bit g10(in[<span class="dv">6</span>],  clock, load, out[<span class="dv">6</span>]);
+  Bit g11(in[<span class="dv">5</span>],  clock, load, out[<span class="dv">5</span>]);
+  Bit g12(in[<span class="dv">4</span>],  clock, load, out[<span class="dv">4</span>]);
+  Bit g13(in[<span class="dv">3</span>],  clock, load, out[<span class="dv">3</span>]);
+  Bit g14(in[<span class="dv">2</span>],  clock, load, out[<span class="dv">2</span>]);
+  Bit g15(in[<span class="dv">1</span>],  clock, load, out[<span class="dv">1</span>]);
+  Bit g16(in[<span class="dv">0</span>],  clock, load, out[<span class="dv">0</span>]);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> PC(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, inc, reset, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] if1, if2, if3, oInc, o;
+    
+  Or g1(load, inc, loadInc);
+  Or g2(loadInc, reset, loadIncReset);
+
+  Inc16 inc1(o, oInc);
+  And16 g3(o, o, out);
+  
+  Mux16 g4(o,   oInc,  inc,   if1);
+  Mux16 g5(if1, in,    load,  if2);
+  Mux16 g6(if2, <span class="bn">16&#39;b0</span>, reset, if3);
+
+  Register reg1(if3, clock, loadIncReset, o);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> RAM8(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, <span class="dt">input</span>[<span class="dv">2</span>:<span class="dv">0</span>] address, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] o0,o1,o2,o3,o4,o5,o6,o7;
+    
+  DMux8Way g0(<span class="bn">1&#39;b1</span>, address, E0, E1, E2, E3, E4, E5, E6, E7);
+  
+  And a0(load, E0, L0); Register r0(in, clock, L0, o0);
+  And a1(load, E1, L1); Register r1(in, clock, L1, o1);
+  And a2(load, E2, L2); Register r2(in, clock, L2, o2);
+  And a3(load, E3, L3); Register r3(in, clock, L3, o3);
+  And a4(load, E4, L4); Register r4(in, clock, L4, o4);
+  And a5(load, E5, L5); Register r5(in, clock, L5, o5);
+  And a6(load, E6, L6); Register r6(in, clock, L6, o6);
+  And a7(load, E7, L7); Register r7(in, clock, L7, o7);
+  
+  Mux8Way16 g1(o0, o1, o2, o3, o4, o5, o6, o7, address, out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> RAM64(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, <span class="dt">input</span>[<span class="dv">5</span>:<span class="dv">0</span>] address, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] o0,o1,o2,o3,o4,o5,o6,o7;
+    
+  DMux8Way g0(<span class="bn">1&#39;b1</span>, address[<span class="dv">5</span>:<span class="dv">3</span>], E0, E1, E2, E3, E4, E5, E6, E7);
+  
+  And a0(load, E0, L0); RAM8 m0(in,  clock, L0, address[<span class="dv">2</span>:<span class="dv">0</span>], o0);
+  And a1(load, E1, L1); RAM8 m1(in,  clock, L1, address[<span class="dv">2</span>:<span class="dv">0</span>], o1);
+  And a2(load, E2, L2); RAM8 m2(in,  clock, L2, address[<span class="dv">2</span>:<span class="dv">0</span>], o2);
+  And a3(load, E3, L3); RAM8 m3(in,  clock, L3, address[<span class="dv">2</span>:<span class="dv">0</span>], o3);
+  And a4(load, E4, L4); RAM8 m4(in,  clock, L4, address[<span class="dv">2</span>:<span class="dv">0</span>], o4);
+  And a5(load, E5, L5); RAM8 m5(in,  clock, L5, address[<span class="dv">2</span>:<span class="dv">0</span>], o5);
+  And a6(load, E6, L6); RAM8 m6(in,  clock, L6, address[<span class="dv">2</span>:<span class="dv">0</span>], o6);
+  And a7(load, E7, L7); RAM8 m7(in,  clock, L7, address[<span class="dv">2</span>:<span class="dv">0</span>], o7);
+
+  Mux8Way16 g1(o0, o1, o2, o3, o4, o5, o6, o7, address[<span class="dv">5</span>:<span class="dv">3</span>], out);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> ROM32K(<span class="dt">input</span>[<span class="dv">14</span>:<span class="dv">0</span>] address, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">reg</span>[<span class="dv">15</span>:<span class="dv">0</span>] m[<span class="dv">0</span>:<span class="dv">2</span>**<span class="dv">14-1</span>];
+    
+  <span class="kw">assign</span> out = m[address];
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> RAM8K(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, <span class="dt">input</span>[<span class="dv">12</span>:<span class="dv">0</span>] address, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">reg</span>[<span class="dv">15</span>:<span class="dv">0</span>] m[<span class="dv">0</span>:<span class="dv">2</span>**<span class="dv">12-1</span>];
+    
+  <span class="kw">assign</span> out = m[address];
+    
+  <span class="kw">always</span> @(<span class="kw">posedge</span> clock) <span class="kw">begin</span>
+    <span class="kw">if</span> (load) m[address] = in;
+  <span class="kw">end</span>
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> RAM16K(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, <span class="dt">input</span>[<span class="dv">13</span>:<span class="dv">0</span>] address, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">reg</span>[<span class="dv">15</span>:<span class="dv">0</span>] m[<span class="dv">0</span>:<span class="dv">2</span>**<span class="dv">13-1</span>];
+    
+  <span class="kw">assign</span> out = m[address];
+    
+  <span class="kw">always</span> @(<span class="kw">posedge</span> clock) <span class="kw">begin</span>
+    <span class="kw">if</span> (load) m[address] = in;
+  <span class="kw">end</span>
+<span class="kw">endmodule</span></code></pre>
+<p>測試程式： ram_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;memory.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span>[<span class="dv">15</span>:<span class="dv">0</span>] in;
+<span class="dt">reg</span>       load, clock;
+<span class="dt">reg</span>[<span class="dv">13</span>:<span class="dv">0</span>] address;
+<span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] out;
+
+RAM16K m(in, clock, load, address, out);
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  clock=<span class="dv">0</span>;
+  <span class="dt">$monitor</span>(<span class="st">&quot;%4dns in=%d clock=%d load=%d address=%d out=%d&quot;</span>, <span class="dt">$stime</span>, in, clock, load, address, out);
+    <span class="bn">#10</span> in=<span class="dv">3</span>; load=<span class="dv">1</span>; address=<span class="dv">5</span>;
+    <span class="bn">#10</span> load=<span class="dv">0</span>; 
+    <span class="bn">#10</span> <span class="dt">$finish</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#2</span> <span class="kw">begin</span>
+  clock=~clock;
+<span class="kw">end</span>
+
+<span class="kw">endmodule</span></code></pre>
+<p>測試結果</p>
+<pre><code>D:\Dropbox\cccweb\db\n2t&gt;iverilog ram_test.v -o ram_test
+
+D:\Dropbox\cccweb\db\n2t&gt;vvp ram_test
+   0ns in=    x clock=0 load=x address=    x out=    x
+   2ns in=    x clock=1 load=x address=    x out=    x
+   4ns in=    x clock=0 load=x address=    x out=    x
+   6ns in=    x clock=1 load=x address=    x out=    x
+   8ns in=    x clock=0 load=x address=    x out=    x
+  10ns in=    3 clock=1 load=1 address=    5 out=    3
+  12ns in=    3 clock=0 load=1 address=    5 out=    3
+  14ns in=    3 clock=1 load=1 address=    5 out=    3
+  16ns in=    3 clock=0 load=1 address=    5 out=    3
+  18ns in=    3 clock=1 load=1 address=    5 out=    3
+  20ns in=    3 clock=0 load=0 address=    5 out=    3
+  22ns in=    3 clock=1 load=0 address=    5 out=    3
+  24ns in=    3 clock=0 load=0 address=    5 out=    3
+  26ns in=    3 clock=1 load=0 address=    5 out=    3
+  28ns in=    3 clock=0 load=0 address=    5 out=    3
+  30ns in=    3 clock=1 load=0 address=    5 out=    3</code></pre>
+<p>另外我們針對 PC 這個元件也單獨進行測試，測試程式與結果如下。</p>
+<p>測試程式： PC_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;memory.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span>[<span class="dv">15</span>:<span class="dv">0</span>] in;
+<span class="dt">reg</span> load, inc, reset, clock;
+<span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] out;
+
+PC pc(in, clock, load, inc, reset, out);
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  clock = <span class="dv">0</span>;
+  <span class="dt">$monitor</span>(<span class="st">&quot;%4dns clock=%d in=%d reset=%d inc=%d load=%d out=%d&quot;</span>, <span class="dt">$stime</span>, clock, in, reset, inc, load, out);
+    inc = <span class="dv">0</span>; load = <span class="dv">0</span>; reset=<span class="dv">0</span>; in=<span class="dv">7</span>;
+    <span class="bn">#10</span> reset=<span class="dv">1</span>; inc=<span class="dv">1</span>; 
+    <span class="bn">#10</span> reset=<span class="dv">0</span>;
+    <span class="bn">#10</span> reset=<span class="dv">0</span>;
+    <span class="bn">#30</span> inc = <span class="dv">0</span>; load=<span class="dv">1</span>;
+    <span class="bn">#30</span> load = <span class="dv">0</span>; inc=<span class="dv">1</span>;
+    <span class="bn">#30</span> <span class="dt">$finish</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#2</span> <span class="kw">begin</span>
+  clock = clock + <span class="dv">1</span>;
+<span class="kw">end</span></code></pre>
+<p>測試結果</p>
+<pre><code>D:\Dropbox\cccweb\db\n2t&gt;iverilog pc_test.v -o pc_test
+
+D:\Dropbox\cccweb\db\n2t&gt;vvp pc_test
+   0ns clock=0 in=    7 reset=0 inc=0 load=0 out=    x
+   2ns clock=1 in=    7 reset=0 inc=0 load=0 out=    x
+   4ns clock=0 in=    7 reset=0 inc=0 load=0 out=    x
+   6ns clock=1 in=    7 reset=0 inc=0 load=0 out=    x
+   8ns clock=0 in=    7 reset=0 inc=0 load=0 out=    x
+  10ns clock=1 in=    7 reset=1 inc=1 load=0 out=    x
+  12ns clock=0 in=    7 reset=1 inc=1 load=0 out=    x
+  14ns clock=1 in=    7 reset=1 inc=1 load=0 out=    0
+  16ns clock=0 in=    7 reset=1 inc=1 load=0 out=    0
+  18ns clock=1 in=    7 reset=1 inc=1 load=0 out=    0
+  20ns clock=0 in=    7 reset=0 inc=1 load=0 out=    0
+  22ns clock=1 in=    7 reset=0 inc=1 load=0 out=    1
+  24ns clock=0 in=    7 reset=0 inc=1 load=0 out=    1
+  26ns clock=1 in=    7 reset=0 inc=1 load=0 out=    2
+  28ns clock=0 in=    7 reset=0 inc=1 load=0 out=    2
+  30ns clock=1 in=    7 reset=0 inc=1 load=0 out=    3
+  32ns clock=0 in=    7 reset=0 inc=1 load=0 out=    3
+  34ns clock=1 in=    7 reset=0 inc=1 load=0 out=    4
+  36ns clock=0 in=    7 reset=0 inc=1 load=0 out=    4
+  38ns clock=1 in=    7 reset=0 inc=1 load=0 out=    5
+  40ns clock=0 in=    7 reset=0 inc=1 load=0 out=    5
+  42ns clock=1 in=    7 reset=0 inc=1 load=0 out=    6
+  44ns clock=0 in=    7 reset=0 inc=1 load=0 out=    6
+  46ns clock=1 in=    7 reset=0 inc=1 load=0 out=    7
+  48ns clock=0 in=    7 reset=0 inc=1 load=0 out=    7
+  50ns clock=1 in=    7 reset=0 inc=1 load=0 out=    8
+  52ns clock=0 in=    7 reset=0 inc=1 load=0 out=    8
+  54ns clock=1 in=    7 reset=0 inc=1 load=0 out=    9
+  56ns clock=0 in=    7 reset=0 inc=1 load=0 out=    9
+  58ns clock=1 in=    7 reset=0 inc=1 load=0 out=   10
+  60ns clock=0 in=    7 reset=0 inc=0 load=1 out=   10
+  62ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  64ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  66ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  68ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  70ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  72ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  74ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  76ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  78ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  80ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  82ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  84ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  86ns clock=1 in=    7 reset=0 inc=0 load=1 out=    7
+  88ns clock=0 in=    7 reset=0 inc=0 load=1 out=    7
+  90ns clock=1 in=    7 reset=0 inc=1 load=0 out=    7
+  92ns clock=0 in=    7 reset=0 inc=1 load=0 out=    7
+  94ns clock=1 in=    7 reset=0 inc=1 load=0 out=    8
+  96ns clock=0 in=    7 reset=0 inc=1 load=0 out=    8
+  98ns clock=1 in=    7 reset=0 inc=1 load=0 out=    9
+ 100ns clock=0 in=    7 reset=0 inc=1 load=0 out=    9
+ 102ns clock=1 in=    7 reset=0 inc=1 load=0 out=   10
+ 104ns clock=0 in=    7 reset=0 inc=1 load=0 out=   10
+ 106ns clock=1 in=    7 reset=0 inc=1 load=0 out=   11
+ 108ns clock=0 in=    7 reset=0 inc=1 load=0 out=   11
+ 110ns clock=1 in=    7 reset=0 inc=1 load=0 out=   12
+ 112ns clock=0 in=    7 reset=0 inc=1 load=0 out=   12
+ 114ns clock=1 in=    7 reset=0 inc=1 load=0 out=   13
+ 116ns clock=0 in=    7 reset=0 inc=1 load=0 out=   13
+ 118ns clock=1 in=    7 reset=0 inc=1 load=0 out=   14
+ 120ns clock=0 in=    7 reset=0 inc=1 load=0 out=   14
+</code></pre>
+<h3 id="結語-2">結語</h3>
+<p>記憶單元的原理請參考下列文件：</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201506/focus5.html">少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第 3 週 -- 記憶體</a></li>
+</ul>
+<h2 id="nand2tetris-第四週----學習機器語言">Nand2Tetris 第四週 -- 學習機器語言</h2>
+<p>關於第四週的學習機器語言部份，是要我們設計 HackComputer 的兩個組合語言程式，一個是控制鍵盤與畫面的 Fill.asm ，另一個是計算乘法的 Mult.asm。</p>
+<p>為了避免公佈答案，在此我只寫下我在這兩個程式所採用的算法虛擬碼，以下是 Fill.asm 的高階虛擬碼。</p>
+<pre><code>forever
+  arr = SCREEN
+  for (i=0; i&lt;8192; i++) {
+    if (*KBD != 0)
+      arr[i] = -1
+    else
+      arr[i] = 0
+  }
+  goto forever;</code></pre>
+<p>以下是較接近組合語言的低階虛擬碼，此虛擬和上面的並不完全一致，因為我有進一步簡化過。</p>
+<pre><code>  arr = SCREEN
+  n=8192
+  i=0
+FOREVER:
+LOOP: 
+  if (i==n) goto ENDLOOP
+  if (*KBD != 0)
+    arr[i] = 0;  // 0x0000
+  else
+    arr[i] = -1; // 0xFFFF
+  i++;
+ENDLOOP:
+  goto FOREVER  </code></pre>
+<p>組合語言 : Mult.asm</p>
+<pre><code>// Multiplies R0 and R1 and stores the result in R2.
+// (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
+
+// Put your code here.
+  a = 0
+LOOP:
+  if (a &lt;= 0) goto EXIT
+    a=a-1;
+  R2 = R2 + R1;
+  goto LOOP</code></pre>
+<p>在寫好組合語言程式 Fill.asm 與 Mult.asm 之後，您可以使用 nand2tetris 所提供的 CPUEmulator 來執行並驗證您寫出來的組合語言程式。</p>
+<h3 id="結語-3">結語</h3>
+<p>組合語言單元的原理請參考下列文件：</p>
+<ul>
+<li><a href="http://ccc.nqu.edu.tw/db/ymag201506/focus6.html">少年科技人雜誌 / 2015年6月號 / Nand2Tetris 第 4 週 -- 機器語言</a></li>
+</ul>
+<h2 id="nand2tetris-第五週----自製處理器與電腦">Nand2Tetris 第五週 -- 自製處理器與電腦</h2>
+<p>本週的作業是設計處理器 HackCPU 與電腦 HackComputer，其中還包含了可以與週邊連接的記憶體部份。Verilog 版的設計如下:</p>
+<p>程式模組： computer.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;memory.v&quot;</span>
+
+<span class="kw">module</span> Memory(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] in, <span class="dt">input</span> clock, load, <span class="dt">input</span>[<span class="dv">14</span>:<span class="dv">0</span>] address, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] out);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] outM, outS, outK, outSK;
+    
+  Not g1(address[<span class="dv">14</span>], N14);
+  And g2(N14, load, Mload);
+  And g3(address[<span class="dv">14</span>], load, Sload);
+  
+  RAM16K ram16k(in, clock, Mload, address[<span class="dv">13</span>:<span class="dv">0</span>], outM);
+  RAM8K  screen(in, clock, Sload, address[<span class="dv">12</span>:<span class="dv">0</span>], outS);
+  Register keyboard(<span class="bn">16&#39;h0F0F</span>, clock, <span class="bn">1&#39;b0</span>, outK);
+  
+  Mux16 g4(outM, outSK, address[<span class="dv">14</span>], out);
+  Mux16 g5(outS, outK,  address[<span class="dv">13</span>], outSK);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> CPU(<span class="dt">input</span>[<span class="dv">15</span>:<span class="dv">0</span>] inM, I, <span class="dt">input</span> clock, reset, <span class="dt">output</span>[<span class="dv">15</span>:<span class="dv">0</span>] outM, <span class="dt">output</span> writeM, <span class="dt">output</span>[<span class="dv">14</span>:<span class="dv">0</span>] addressM, pc);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] Ain, Aout, AorM, ALUout, Dout, pcOut, addressMOut;
+  Or  g1(ng, zr, ngzr);   <span class="co">// ngzr = (ng|zr)</span>
+  Not g2(ngzr, g);     <span class="co">// g = out &gt; 0 = !(ng|zr);  ng = out &lt; 0;  zr = out = 0</span>
+  And g3(ng, I[<span class="dv">2</span>], passLT);    <span class="co">// ngLT = (ng&amp;LT)</span>
+  And g4(zr, I[<span class="dv">1</span>], passEQ);    <span class="co">// zrEQ = (zr&amp;EQ)</span>
+  And g5(g,  I[<span class="dv">0</span>], passGT);    <span class="co">// gGT = (g&amp;GT)</span>
+  Or  g6(passLT, passEQ, passLE);
+  Or  g7(passLE, passGT, pass);
+
+  And g8(I[<span class="dv">15</span>], pass, PCload);     <span class="co">// PCload = I15&amp;J</span>
+  
+  <span class="co">// ALU</span>
+  Mux16 g9(Aout, inM, I[<span class="dv">12</span>], AorM); <span class="co">// Mux ALU in : cAorM = I[12]</span>
+  
+  ALU alu(Dout, AorM, I[<span class="dv">11</span>], I[<span class="dv">10</span>], I[<span class="dv">9</span>], I[<span class="dv">8</span>], I[<span class="dv">7</span>], I[<span class="dv">6</span>], ALUout, zr, ng);
+  
+  PC pc1(Aout, clock, PCload, <span class="bn">1&#39;b1</span>, reset, pcOut);
+    <span class="kw">assign</span> pc = pcOut[<span class="dv">14</span>:<span class="dv">0</span>];
+  
+  <span class="co">// A register</span>
+  Not g10(I[<span class="dv">15</span>], Atype);
+  And g11(I[<span class="dv">15</span>], I[<span class="dv">5</span>], AluToA); <span class="co">// AluToA = I[15]&amp;d1</span>
+  Or  g12(Atype, AluToA, Aload);
+  
+  Mux16 g13(I, ALUout, AluToA, Ain); <span class="co">// sel=I[15]</span>
+  Register A(Ain, clock, Aload, Aout);
+  
+  <span class="co">// D register</span>
+  And g14(I[<span class="dv">15</span>], I[<span class="dv">4</span>], Dload); <span class="co">// Aload = I[15]&amp;d2</span>
+  Register D(ALUout, clock, Dload, Dout);
+  
+  <span class="co">// output</span>
+    <span class="kw">assign</span> addressM = Aout[<span class="dv">14</span>:<span class="dv">0</span>];
+  And g16(I[<span class="dv">15</span>], I[<span class="dv">3</span>], writeM); <span class="co">// writeM = I[15] &amp; d3</span>
+  And16 g17(ALUout, ALUout, outM);
+<span class="kw">endmodule</span>
+
+<span class="kw">module</span> Computer(<span class="dt">input</span> clock, reset);
+  <span class="dt">wire</span>[<span class="dv">15</span>:<span class="dv">0</span>] inM, outM, I;
+    <span class="dt">wire</span>[<span class="dv">14</span>:<span class="dv">0</span>] addressM, pc;
+    
+  Memory ram(inM, !clock, loadM, addressM, outM);
+  ROM32K rom(pc, I);
+  CPU    cpu(outM, I, clock, reset, inM, loadM, addressM, pc);  
+<span class="kw">endmodule</span></code></pre>
+<p>測試程式： computer_test.v</p>
+<pre class="sourceCode verilog"><code class="sourceCode verilog"><span class="ot">`include </span><span class="fl">&quot;computer.v&quot;</span>
+
+<span class="kw">module</span> main;
+<span class="dt">reg</span> reset, clock;
+
+Computer c(clock, reset);
+
+<span class="dt">integer</span> i;
+
+<span class="kw">initial</span>
+<span class="kw">begin</span>
+  <span class="dt">$readmemb</span>(<span class="st">&quot;sum.hack&quot;</span>, c.rom.m);
+  <span class="kw">for</span> (i=<span class="dv">0</span>; i &lt; <span class="dv">32</span>; i=i<span class="dv">+1</span>) <span class="kw">begin</span>
+    <span class="dt">$display</span>(<span class="st">&quot;%4x: %x&quot;</span>, i, c.rom.m[i]);
+  <span class="kw">end</span>
+  <span class="dt">$monitor</span>(<span class="st">&quot;%4dns clock=%d pc=%d I=%d A=%d D=%d M=%d&quot;</span>, <span class="dt">$stime</span>, clock, c.pc, c.I, c.addressM, c.cpu.Dout, c.outM);
+    clock = <span class="dv">0</span>;
+    <span class="bn">#10</span> reset=<span class="dv">1</span>;
+    <span class="bn">#30</span> reset=<span class="dv">0</span>;
+<span class="kw">end</span>
+
+<span class="kw">always</span> <span class="bn">#5</span> <span class="kw">begin</span>
+  clock = clock + <span class="dv">1</span>;
+<span class="kw">end</span>
+
+<span class="kw">initial</span> <span class="bn">#1800</span> <span class="dt">$finish</span>;
+
+<span class="kw">endmodule</span></code></pre>
+<p>輸入檔 : sum.hack</p>
+<pre><code>0000000000010000  //    @i // i refers to some RAM location
+1110111111001000  //    M=1 // i=1
+0000000000010001  //    @sum // sum refers to some RAM location
+1110101010001000  //    M=0 // sum=0
+0000000000010000  // (LOOP) @i
+1111110000010000  //    D=M // D = i
+0000000000001010  //    @10
+1110010011010000  //    D=D-A // D = i - 10
+0000000000010010  //    @END
+1110001100000001  //    D;JGT // If (i-100) &gt; 0 goto END
+0000000000010000  //    @i
+1111110000010000  //    D=M // D = i
+0000000000010001  //    @sum
+1111000010001000  //    M=D+M // sum += i
+0000000000010000  //    @i
+1111110111001000  //    M=M+1 // i++
+0000000000000100  //    @LOOP
+1110101010000111  //    0;JMP // Got LOOP
+0000000000010010  // (END)  @END
+1110101010000111  //    0;JMP // Infinite loop</code></pre>
+<p>測試結果</p>
+<pre><code>WARNING: computer_test.v:12: $readmemb(sum.hack): Not enough words in the file for the requested range [0:16383].
+00000000: 0010
+00000001: efc8
+00000002: 0011
+00000003: ea88
+00000004: 0010
+00000005: fc10
+00000006: 000a
+00000007: e4d0
+00000008: 0012
+00000009: e301
+0000000a: 0010
+0000000b: fc10
+0000000c: 0011
+0000000d: f088
+0000000e: 0010
+0000000f: fdc8
+00000010: 0004
+00000011: ea87
+00000012: 0012
+00000013: ea87
+00000014: xxxx
+00000015: xxxx
+00000016: xxxx
+00000017: xxxx
+00000018: xxxx
+00000019: xxxx
+0000001a: xxxx
+0000001b: xxxx
+0000001c: xxxx
+0000001d: xxxx
+0000001e: xxxx
+0000001f: xxxx
+   0ns clock=0 pc=    x I=    x A=    x D=    x M=    x
+   5ns clock=1 pc=    x I=    x A=    x D=    x M=    x
+  10ns clock=0 pc=    x I=    x A=    x D=    x M=    x
+  15ns clock=1 pc=    0 I=   16 A=    x D=    x M=    x
+  20ns clock=0 pc=    0 I=   16 A=    x D=    x M=    x
+  25ns clock=1 pc=    0 I=   16 A=   16 D=    x M=    x
+  30ns clock=0 pc=    0 I=   16 A=   16 D=    x M=    x
+  35ns clock=1 pc=    0 I=   16 A=   16 D=    x M=    x
+  40ns clock=0 pc=    0 I=   16 A=   16 D=    x M=    x
+  45ns clock=1 pc=    1 I=61384 A=   16 D=    x M=    x
+  50ns clock=0 pc=    1 I=61384 A=   16 D=    x M=    1
+  55ns clock=1 pc=    2 I=   17 A=   16 D=    x M=    1
+  60ns clock=0 pc=    2 I=   17 A=   16 D=    x M=    1
+  65ns clock=1 pc=    3 I=60040 A=   17 D=    x M=    x
+  70ns clock=0 pc=    3 I=60040 A=   17 D=    x M=    0
+  75ns clock=1 pc=    4 I=   16 A=   17 D=    x M=    0
+  80ns clock=0 pc=    4 I=   16 A=   17 D=    x M=    0
+  85ns clock=1 pc=    5 I=64528 A=   16 D=    x M=    1
+  90ns clock=0 pc=    5 I=64528 A=   16 D=    x M=    1
+  95ns clock=1 pc=    6 I=   10 A=   16 D=    1 M=    1
+ 100ns clock=0 pc=    6 I=   10 A=   16 D=    1 M=    1
+ 105ns clock=1 pc=    7 I=58576 A=   10 D=    1 M=    x
+ 110ns clock=0 pc=    7 I=58576 A=   10 D=    1 M=    x
+ 115ns clock=1 pc=    8 I=   18 A=   10 D=65527 M=    x
+ 120ns clock=0 pc=    8 I=   18 A=   10 D=65527 M=    x
+ 125ns clock=1 pc=    9 I=58113 A=   18 D=65527 M=    x
+ 130ns clock=0 pc=    9 I=58113 A=   18 D=65527 M=    x
+ 135ns clock=1 pc=   10 I=   16 A=   18 D=65527 M=    x
+ 140ns clock=0 pc=   10 I=   16 A=   18 D=65527 M=    x
+ 145ns clock=1 pc=   11 I=64528 A=   16 D=65527 M=    1
+ 150ns clock=0 pc=   11 I=64528 A=   16 D=65527 M=    1
+ 155ns clock=1 pc=   12 I=   17 A=   16 D=    1 M=    1
+ 160ns clock=0 pc=   12 I=   17 A=   16 D=    1 M=    1
+ 165ns clock=1 pc=   13 I=61576 A=   17 D=    1 M=    0
+ 170ns clock=0 pc=   13 I=61576 A=   17 D=    1 M=    1
+ 175ns clock=1 pc=   14 I=   16 A=   17 D=    1 M=    1
+ 180ns clock=0 pc=   14 I=   16 A=   17 D=    1 M=    1
+ 185ns clock=1 pc=   15 I=64968 A=   16 D=    1 M=    1
+ 190ns clock=0 pc=   15 I=64968 A=   16 D=    1 M=    2
+ 195ns clock=1 pc=   16 I=    4 A=   16 D=    1 M=    2
+ 200ns clock=0 pc=   16 I=    4 A=   16 D=    1 M=    2
+ 205ns clock=1 pc=   17 I=60039 A=    4 D=    1 M=    x
+ 210ns clock=0 pc=   17 I=60039 A=    4 D=    1 M=    x
+ 215ns clock=1 pc=    4 I=   16 A=    4 D=    1 M=    x
+ 220ns clock=0 pc=    4 I=   16 A=    4 D=    1 M=    x
+ 225ns clock=1 pc=    5 I=64528 A=   16 D=    1 M=    2
+ 230ns clock=0 pc=    5 I=64528 A=   16 D=    1 M=    2
+ 235ns clock=1 pc=    6 I=   10 A=   16 D=    2 M=    2
+ 240ns clock=0 pc=    6 I=   10 A=   16 D=    2 M=    2
+ 245ns clock=1 pc=    7 I=58576 A=   10 D=    2 M=    x
+ 250ns clock=0 pc=    7 I=58576 A=   10 D=    2 M=    x
+ 255ns clock=1 pc=    8 I=   18 A=   10 D=65528 M=    x
+ 260ns clock=0 pc=    8 I=   18 A=   10 D=65528 M=    x
+ 265ns clock=1 pc=    9 I=58113 A=   18 D=65528 M=    x
+ 270ns clock=0 pc=    9 I=58113 A=   18 D=65528 M=    x
+ 275ns clock=1 pc=   10 I=   16 A=   18 D=65528 M=    x
+ 280ns clock=0 pc=   10 I=   16 A=   18 D=65528 M=    x
+ 285ns clock=1 pc=   11 I=64528 A=   16 D=65528 M=    2
+ 290ns clock=0 pc=   11 I=64528 A=   16 D=65528 M=    2
+ 295ns clock=1 pc=   12 I=   17 A=   16 D=    2 M=    2
+ 300ns clock=0 pc=   12 I=   17 A=   16 D=    2 M=    2
+ 305ns clock=1 pc=   13 I=61576 A=   17 D=    2 M=    1
+ 310ns clock=0 pc=   13 I=61576 A=   17 D=    2 M=    3
+ 315ns clock=1 pc=   14 I=   16 A=   17 D=    2 M=    3
+ 320ns clock=0 pc=   14 I=   16 A=   17 D=    2 M=    3
+ 325ns clock=1 pc=   15 I=64968 A=   16 D=    2 M=    2
+ 330ns clock=0 pc=   15 I=64968 A=   16 D=    2 M=    3
+ 335ns clock=1 pc=   16 I=    4 A=   16 D=    2 M=    3
+ 340ns clock=0 pc=   16 I=    4 A=   16 D=    2 M=    3
+ 345ns clock=1 pc=   17 I=60039 A=    4 D=    2 M=    x
+ 350ns clock=0 pc=   17 I=60039 A=    4 D=    2 M=    x
+ 355ns clock=1 pc=    4 I=   16 A=    4 D=    2 M=    x
+ 360ns clock=0 pc=    4 I=   16 A=    4 D=    2 M=    x
+ 365ns clock=1 pc=    5 I=64528 A=   16 D=    2 M=    3
+ 370ns clock=0 pc=    5 I=64528 A=   16 D=    2 M=    3
+ 375ns clock=1 pc=    6 I=   10 A=   16 D=    3 M=    3
+ 380ns clock=0 pc=    6 I=   10 A=   16 D=    3 M=    3
+ 385ns clock=1 pc=    7 I=58576 A=   10 D=    3 M=    x
+ 390ns clock=0 pc=    7 I=58576 A=   10 D=    3 M=    x
+ 395ns clock=1 pc=    8 I=   18 A=   10 D=65529 M=    x
+ 400ns clock=0 pc=    8 I=   18 A=   10 D=65529 M=    x
+ 405ns clock=1 pc=    9 I=58113 A=   18 D=65529 M=    x
+ 410ns clock=0 pc=    9 I=58113 A=   18 D=65529 M=    x
+ 415ns clock=1 pc=   10 I=   16 A=   18 D=65529 M=    x
+ 420ns clock=0 pc=   10 I=   16 A=   18 D=65529 M=    x
+ 425ns clock=1 pc=   11 I=64528 A=   16 D=65529 M=    3
+ 430ns clock=0 pc=   11 I=64528 A=   16 D=65529 M=    3
+ 435ns clock=1 pc=   12 I=   17 A=   16 D=    3 M=    3
+ 440ns clock=0 pc=   12 I=   17 A=   16 D=    3 M=    3
+ 445ns clock=1 pc=   13 I=61576 A=   17 D=    3 M=    3
+ 450ns clock=0 pc=   13 I=61576 A=   17 D=    3 M=    6
+ 455ns clock=1 pc=   14 I=   16 A=   17 D=    3 M=    6
+ 460ns clock=0 pc=   14 I=   16 A=   17 D=    3 M=    6
+ 465ns clock=1 pc=   15 I=64968 A=   16 D=    3 M=    3
+ 470ns clock=0 pc=   15 I=64968 A=   16 D=    3 M=    4
+ 475ns clock=1 pc=   16 I=    4 A=   16 D=    3 M=    4
+ 480ns clock=0 pc=   16 I=    4 A=   16 D=    3 M=    4
+ 485ns clock=1 pc=   17 I=60039 A=    4 D=    3 M=    x
+ 490ns clock=0 pc=   17 I=60039 A=    4 D=    3 M=    x
+ 495ns clock=1 pc=    4 I=   16 A=    4 D=    3 M=    x
+ 500ns clock=0 pc=    4 I=   16 A=    4 D=    3 M=    x
+ 505ns clock=1 pc=    5 I=64528 A=   16 D=    3 M=    4
+ 510ns clock=0 pc=    5 I=64528 A=   16 D=    3 M=    4
+ 515ns clock=1 pc=    6 I=   10 A=   16 D=    4 M=    4
+ 520ns clock=0 pc=    6 I=   10 A=   16 D=    4 M=    4
+ 525ns clock=1 pc=    7 I=58576 A=   10 D=    4 M=    x
+ 530ns clock=0 pc=    7 I=58576 A=   10 D=    4 M=    x
+ 535ns clock=1 pc=    8 I=   18 A=   10 D=65530 M=    x
+ 540ns clock=0 pc=    8 I=   18 A=   10 D=65530 M=    x
+ 545ns clock=1 pc=    9 I=58113 A=   18 D=65530 M=    x
+ 550ns clock=0 pc=    9 I=58113 A=   18 D=65530 M=    x
+ 555ns clock=1 pc=   10 I=   16 A=   18 D=65530 M=    x
+ 560ns clock=0 pc=   10 I=   16 A=   18 D=65530 M=    x
+ 565ns clock=1 pc=   11 I=64528 A=   16 D=65530 M=    4
+ 570ns clock=0 pc=   11 I=64528 A=   16 D=65530 M=    4
+ 575ns clock=1 pc=   12 I=   17 A=   16 D=    4 M=    4
+ 580ns clock=0 pc=   12 I=   17 A=   16 D=    4 M=    4
+ 585ns clock=1 pc=   13 I=61576 A=   17 D=    4 M=    6
+ 590ns clock=0 pc=   13 I=61576 A=   17 D=    4 M=   10
+ 595ns clock=1 pc=   14 I=   16 A=   17 D=    4 M=   10
+ 600ns clock=0 pc=   14 I=   16 A=   17 D=    4 M=   10
+ 605ns clock=1 pc=   15 I=64968 A=   16 D=    4 M=    4
+ 610ns clock=0 pc=   15 I=64968 A=   16 D=    4 M=    5
+ 615ns clock=1 pc=   16 I=    4 A=   16 D=    4 M=    5
+ 620ns clock=0 pc=   16 I=    4 A=   16 D=    4 M=    5
+ 625ns clock=1 pc=   17 I=60039 A=    4 D=    4 M=    x
+ 630ns clock=0 pc=   17 I=60039 A=    4 D=    4 M=    x
+ 635ns clock=1 pc=    4 I=   16 A=    4 D=    4 M=    x
+ 640ns clock=0 pc=    4 I=   16 A=    4 D=    4 M=    x
+ 645ns clock=1 pc=    5 I=64528 A=   16 D=    4 M=    5
+ 650ns clock=0 pc=    5 I=64528 A=   16 D=    4 M=    5
+ 655ns clock=1 pc=    6 I=   10 A=   16 D=    5 M=    5
+ 660ns clock=0 pc=    6 I=   10 A=   16 D=    5 M=    5
+ 665ns clock=1 pc=    7 I=58576 A=   10 D=    5 M=    x
+ 670ns clock=0 pc=    7 I=58576 A=   10 D=    5 M=    x
+ 675ns clock=1 pc=    8 I=   18 A=   10 D=65531 M=    x
+ 680ns clock=0 pc=    8 I=   18 A=   10 D=65531 M=    x
+ 685ns clock=1 pc=    9 I=58113 A=   18 D=65531 M=    x
+ 690ns clock=0 pc=    9 I=58113 A=   18 D=65531 M=    x
+ 695ns clock=1 pc=   10 I=   16 A=   18 D=65531 M=    x
+ 700ns clock=0 pc=   10 I=   16 A=   18 D=65531 M=    x
+ 705ns clock=1 pc=   11 I=64528 A=   16 D=65531 M=    5
+ 710ns clock=0 pc=   11 I=64528 A=   16 D=65531 M=    5
+ 715ns clock=1 pc=   12 I=   17 A=   16 D=    5 M=    5
+ 720ns clock=0 pc=   12 I=   17 A=   16 D=    5 M=    5
+ 725ns clock=1 pc=   13 I=61576 A=   17 D=    5 M=   10
+ 730ns clock=0 pc=   13 I=61576 A=   17 D=    5 M=   15
+ 735ns clock=1 pc=   14 I=   16 A=   17 D=    5 M=   15
+ 740ns clock=0 pc=   14 I=   16 A=   17 D=    5 M=   15
+ 745ns clock=1 pc=   15 I=64968 A=   16 D=    5 M=    5
+ 750ns clock=0 pc=   15 I=64968 A=   16 D=    5 M=    6
+ 755ns clock=1 pc=   16 I=    4 A=   16 D=    5 M=    6
+ 760ns clock=0 pc=   16 I=    4 A=   16 D=    5 M=    6
+ 765ns clock=1 pc=   17 I=60039 A=    4 D=    5 M=    x
+ 770ns clock=0 pc=   17 I=60039 A=    4 D=    5 M=    x
+ 775ns clock=1 pc=    4 I=   16 A=    4 D=    5 M=    x
+ 780ns clock=0 pc=    4 I=   16 A=    4 D=    5 M=    x
+ 785ns clock=1 pc=    5 I=64528 A=   16 D=    5 M=    6
+ 790ns clock=0 pc=    5 I=64528 A=   16 D=    5 M=    6
+ 795ns clock=1 pc=    6 I=   10 A=   16 D=    6 M=    6
+ 800ns clock=0 pc=    6 I=   10 A=   16 D=    6 M=    6
+ 805ns clock=1 pc=    7 I=58576 A=   10 D=    6 M=    x
+ 810ns clock=0 pc=    7 I=58576 A=   10 D=    6 M=    x
+ 815ns clock=1 pc=    8 I=   18 A=   10 D=65532 M=    x
+ 820ns clock=0 pc=    8 I=   18 A=   10 D=65532 M=    x
+ 825ns clock=1 pc=    9 I=58113 A=   18 D=65532 M=    x
+ 830ns clock=0 pc=    9 I=58113 A=   18 D=65532 M=    x
+ 835ns clock=1 pc=   10 I=   16 A=   18 D=65532 M=    x
+ 840ns clock=0 pc=   10 I=   16 A=   18 D=65532 M=    x
+ 845ns clock=1 pc=   11 I=64528 A=   16 D=65532 M=    6
+ 850ns clock=0 pc=   11 I=64528 A=   16 D=65532 M=    6
+ 855ns clock=1 pc=   12 I=   17 A=   16 D=    6 M=    6
+ 860ns clock=0 pc=   12 I=   17 A=   16 D=    6 M=    6
+ 865ns clock=1 pc=   13 I=61576 A=   17 D=    6 M=   15
+ 870ns clock=0 pc=   13 I=61576 A=   17 D=    6 M=   21
+ 875ns clock=1 pc=   14 I=   16 A=   17 D=    6 M=   21
+ 880ns clock=0 pc=   14 I=   16 A=   17 D=    6 M=   21
+ 885ns clock=1 pc=   15 I=64968 A=   16 D=    6 M=    6
+ 890ns clock=0 pc=   15 I=64968 A=   16 D=    6 M=    7
+ 895ns clock=1 pc=   16 I=    4 A=   16 D=    6 M=    7
+ 900ns clock=0 pc=   16 I=    4 A=   16 D=    6 M=    7
+ 905ns clock=1 pc=   17 I=60039 A=    4 D=    6 M=    x
+ 910ns clock=0 pc=   17 I=60039 A=    4 D=    6 M=    x
+ 915ns clock=1 pc=    4 I=   16 A=    4 D=    6 M=    x
+ 920ns clock=0 pc=    4 I=   16 A=    4 D=    6 M=    x
+ 925ns clock=1 pc=    5 I=64528 A=   16 D=    6 M=    7
+ 930ns clock=0 pc=    5 I=64528 A=   16 D=    6 M=    7
+ 935ns clock=1 pc=    6 I=   10 A=   16 D=    7 M=    7
+ 940ns clock=0 pc=    6 I=   10 A=   16 D=    7 M=    7
+ 945ns clock=1 pc=    7 I=58576 A=   10 D=    7 M=    x
+ 950ns clock=0 pc=    7 I=58576 A=   10 D=    7 M=    x
+ 955ns clock=1 pc=    8 I=   18 A=   10 D=65533 M=    x
+ 960ns clock=0 pc=    8 I=   18 A=   10 D=65533 M=    x
+ 965ns clock=1 pc=    9 I=58113 A=   18 D=65533 M=    x
+ 970ns clock=0 pc=    9 I=58113 A=   18 D=65533 M=    x
+ 975ns clock=1 pc=   10 I=   16 A=   18 D=65533 M=    x
+ 980ns clock=0 pc=   10 I=   16 A=   18 D=65533 M=    x
+ 985ns clock=1 pc=   11 I=64528 A=   16 D=65533 M=    7
+ 990ns clock=0 pc=   11 I=64528 A=   16 D=65533 M=    7
+ 995ns clock=1 pc=   12 I=   17 A=   16 D=    7 M=    7
+1000ns clock=0 pc=   12 I=   17 A=   16 D=    7 M=    7
+1005ns clock=1 pc=   13 I=61576 A=   17 D=    7 M=   21
+1010ns clock=0 pc=   13 I=61576 A=   17 D=    7 M=   28
+1015ns clock=1 pc=   14 I=   16 A=   17 D=    7 M=   28
+1020ns clock=0 pc=   14 I=   16 A=   17 D=    7 M=   28
+1025ns clock=1 pc=   15 I=64968 A=   16 D=    7 M=    7
+1030ns clock=0 pc=   15 I=64968 A=   16 D=    7 M=    8
+1035ns clock=1 pc=   16 I=    4 A=   16 D=    7 M=    8
+1040ns clock=0 pc=   16 I=    4 A=   16 D=    7 M=    8
+1045ns clock=1 pc=   17 I=60039 A=    4 D=    7 M=    x
+1050ns clock=0 pc=   17 I=60039 A=    4 D=    7 M=    x
+1055ns clock=1 pc=    4 I=   16 A=    4 D=    7 M=    x
+1060ns clock=0 pc=    4 I=   16 A=    4 D=    7 M=    x
+1065ns clock=1 pc=    5 I=64528 A=   16 D=    7 M=    8
+1070ns clock=0 pc=    5 I=64528 A=   16 D=    7 M=    8
+1075ns clock=1 pc=    6 I=   10 A=   16 D=    8 M=    8
+1080ns clock=0 pc=    6 I=   10 A=   16 D=    8 M=    8
+1085ns clock=1 pc=    7 I=58576 A=   10 D=    8 M=    x
+1090ns clock=0 pc=    7 I=58576 A=   10 D=    8 M=    x
+1095ns clock=1 pc=    8 I=   18 A=   10 D=65534 M=    x
+1100ns clock=0 pc=    8 I=   18 A=   10 D=65534 M=    x
+1105ns clock=1 pc=    9 I=58113 A=   18 D=65534 M=    x
+1110ns clock=0 pc=    9 I=58113 A=   18 D=65534 M=    x
+1115ns clock=1 pc=   10 I=   16 A=   18 D=65534 M=    x
+1120ns clock=0 pc=   10 I=   16 A=   18 D=65534 M=    x
+1125ns clock=1 pc=   11 I=64528 A=   16 D=65534 M=    8
+1130ns clock=0 pc=   11 I=64528 A=   16 D=65534 M=    8
+1135ns clock=1 pc=   12 I=   17 A=   16 D=    8 M=    8
+1140ns clock=0 pc=   12 I=   17 A=   16 D=    8 M=    8
+1145ns clock=1 pc=   13 I=61576 A=   17 D=    8 M=   28
+1150ns clock=0 pc=   13 I=61576 A=   17 D=    8 M=   36
+1155ns clock=1 pc=   14 I=   16 A=   17 D=    8 M=   36
+1160ns clock=0 pc=   14 I=   16 A=   17 D=    8 M=   36
+1165ns clock=1 pc=   15 I=64968 A=   16 D=    8 M=    8
+1170ns clock=0 pc=   15 I=64968 A=   16 D=    8 M=    9
+1175ns clock=1 pc=   16 I=    4 A=   16 D=    8 M=    9
+1180ns clock=0 pc=   16 I=    4 A=   16 D=    8 M=    9
+1185ns clock=1 pc=   17 I=60039 A=    4 D=    8 M=    x
+1190ns clock=0 pc=   17 I=60039 A=    4 D=    8 M=    x
+1195ns clock=1 pc=    4 I=   16 A=    4 D=    8 M=    x
+1200ns clock=0 pc=    4 I=   16 A=    4 D=    8 M=    x
+1205ns clock=1 pc=    5 I=64528 A=   16 D=    8 M=    9
+1210ns clock=0 pc=    5 I=64528 A=   16 D=    8 M=    9
+1215ns clock=1 pc=    6 I=   10 A=   16 D=    9 M=    9
+1220ns clock=0 pc=    6 I=   10 A=   16 D=    9 M=    9
+1225ns clock=1 pc=    7 I=58576 A=   10 D=    9 M=    x
+1230ns clock=0 pc=    7 I=58576 A=   10 D=    9 M=    x
+1235ns clock=1 pc=    8 I=   18 A=   10 D=65535 M=    x
+1240ns clock=0 pc=    8 I=   18 A=   10 D=65535 M=    x
+1245ns clock=1 pc=    9 I=58113 A=   18 D=65535 M=    x
+1250ns clock=0 pc=    9 I=58113 A=   18 D=65535 M=    x
+1255ns clock=1 pc=   10 I=   16 A=   18 D=65535 M=    x
+1260ns clock=0 pc=   10 I=   16 A=   18 D=65535 M=    x
+1265ns clock=1 pc=   11 I=64528 A=   16 D=65535 M=    9
+1270ns clock=0 pc=   11 I=64528 A=   16 D=65535 M=    9
+1275ns clock=1 pc=   12 I=   17 A=   16 D=    9 M=    9
+1280ns clock=0 pc=   12 I=   17 A=   16 D=    9 M=    9
+1285ns clock=1 pc=   13 I=61576 A=   17 D=    9 M=   36
+1290ns clock=0 pc=   13 I=61576 A=   17 D=    9 M=   45
+1295ns clock=1 pc=   14 I=   16 A=   17 D=    9 M=   45
+1300ns clock=0 pc=   14 I=   16 A=   17 D=    9 M=   45
+1305ns clock=1 pc=   15 I=64968 A=   16 D=    9 M=    9
+1310ns clock=0 pc=   15 I=64968 A=   16 D=    9 M=   10
+1315ns clock=1 pc=   16 I=    4 A=   16 D=    9 M=   10
+1320ns clock=0 pc=   16 I=    4 A=   16 D=    9 M=   10
+1325ns clock=1 pc=   17 I=60039 A=    4 D=    9 M=    x
+1330ns clock=0 pc=   17 I=60039 A=    4 D=    9 M=    x
+1335ns clock=1 pc=    4 I=   16 A=    4 D=    9 M=    x
+1340ns clock=0 pc=    4 I=   16 A=    4 D=    9 M=    x
+1345ns clock=1 pc=    5 I=64528 A=   16 D=    9 M=   10
+1350ns clock=0 pc=    5 I=64528 A=   16 D=    9 M=   10
+1355ns clock=1 pc=    6 I=   10 A=   16 D=   10 M=   10
+1360ns clock=0 pc=    6 I=   10 A=   16 D=   10 M=   10
+1365ns clock=1 pc=    7 I=58576 A=   10 D=   10 M=    x
+1370ns clock=0 pc=    7 I=58576 A=   10 D=   10 M=    x
+1375ns clock=1 pc=    8 I=   18 A=   10 D=    0 M=    x
+1380ns clock=0 pc=    8 I=   18 A=   10 D=    0 M=    x
+1385ns clock=1 pc=    9 I=58113 A=   18 D=    0 M=    x
+1390ns clock=0 pc=    9 I=58113 A=   18 D=    0 M=    x
+1395ns clock=1 pc=   10 I=   16 A=   18 D=    0 M=    x
+1400ns clock=0 pc=   10 I=   16 A=   18 D=    0 M=    x
+1405ns clock=1 pc=   11 I=64528 A=   16 D=    0 M=   10
+1410ns clock=0 pc=   11 I=64528 A=   16 D=    0 M=   10
+1415ns clock=1 pc=   12 I=   17 A=   16 D=   10 M=   10
+1420ns clock=0 pc=   12 I=   17 A=   16 D=   10 M=   10
+1425ns clock=1 pc=   13 I=61576 A=   17 D=   10 M=   45
+1430ns clock=0 pc=   13 I=61576 A=   17 D=   10 M=   55
+1435ns clock=1 pc=   14 I=   16 A=   17 D=   10 M=   55
+1440ns clock=0 pc=   14 I=   16 A=   17 D=   10 M=   55
+1445ns clock=1 pc=   15 I=64968 A=   16 D=   10 M=   10
+1450ns clock=0 pc=   15 I=64968 A=   16 D=   10 M=   11
+1455ns clock=1 pc=   16 I=    4 A=   16 D=   10 M=   11
+1460ns clock=0 pc=   16 I=    4 A=   16 D=   10 M=   11
+1465ns clock=1 pc=   17 I=60039 A=    4 D=   10 M=    x
+1470ns clock=0 pc=   17 I=60039 A=    4 D=   10 M=    x
+1475ns clock=1 pc=    4 I=   16 A=    4 D=   10 M=    x
+1480ns clock=0 pc=    4 I=   16 A=    4 D=   10 M=    x
+1485ns clock=1 pc=    5 I=64528 A=   16 D=   10 M=   11
+1490ns clock=0 pc=    5 I=64528 A=   16 D=   10 M=   11
+1495ns clock=1 pc=    6 I=   10 A=   16 D=   11 M=   11
+1500ns clock=0 pc=    6 I=   10 A=   16 D=   11 M=   11
+1505ns clock=1 pc=    7 I=58576 A=   10 D=   11 M=    x
+1510ns clock=0 pc=    7 I=58576 A=   10 D=   11 M=    x
+1515ns clock=1 pc=    8 I=   18 A=   10 D=    1 M=    x
+1520ns clock=0 pc=    8 I=   18 A=   10 D=    1 M=    x
+1525ns clock=1 pc=    9 I=58113 A=   18 D=    1 M=    x
+1530ns clock=0 pc=    9 I=58113 A=   18 D=    1 M=    x
+1535ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1540ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1545ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1550ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1555ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1560ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1565ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1570ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1575ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1580ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1585ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1590ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1595ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1600ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1605ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1610ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1615ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1620ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1625ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1630ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1635ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1640ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1645ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1650ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1655ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1660ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1665ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1670ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1675ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1680ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1685ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1690ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1695ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1700ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1705ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1710ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1715ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1720ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1725ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1730ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1735ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1740ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1745ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1750ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1755ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1760ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1765ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1770ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1775ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1780ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x
+1785ns clock=1 pc=   19 I=60039 A=   18 D=    1 M=    x
+1790ns clock=0 pc=   19 I=60039 A=   18 D=    1 M=    x
+1795ns clock=1 pc=   18 I=   18 A=   18 D=    1 M=    x
+1800ns clock=0 pc=   18 I=   18 A=   18 D=    1 M=    x</code></pre>
+<h3 id="結語-4">結語</h3>
+<p>您可以看到上述的輸出當中有 55 這個數字，這代表 1+...+10 = 55 的計算結果是正確的，也就是處理器可以正常的執行 sum.hack 程式了。</p>
+<h1 id="雜誌訊息">雜誌訊息</h1>
+<h2 id="讀者訂閱">讀者訂閱</h2>
+<p>程式人雜誌是一個結合「開放原始碼與公益捐款活動」的雜誌，簡稱「開放公益雜誌」。開放公益雜誌本著「讀書做善事、寫書做公益」的精神，我們非常歡迎程式人認養專欄、或者捐出您的網誌，如果您願意成為本雜誌的專欄作家，請加入 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 一同共襄盛舉。</p>
+<p>我們透過發行這本雜誌，希望讓大家可以讀到想讀的書，學到想學的技術，同時也讓寫作的朋友的作品能產生良好價值 – 那就是讓讀者根據雜誌的價值捐款給慈善團體。 讀雜誌做公益也不需要有壓力，您不需要每讀一本就急著去捐款，您可以讀了十本再捐，或者使用固定的月捐款方式，當成是雜誌訂閱費，或者是季捐款、一年捐一次等都 OK ! 甚至是單純當個讀者我們也都很歡迎！</p>
+<p>本雜誌每期參考價：NT 50 元，如果您喜歡本雜誌，請將書款捐贈公益團體。例如可捐贈給「羅慧夫顱顏基金會 彰化銀行(009) 帳號：5234-01-41778-800」。(若匯款要加註可用「程式人雜誌」五個字)</p>
+<h2 id="投稿須知">投稿須知</h2>
+<p><em>給專欄寫作者：</em> 做公益不需要有壓力。如果您願意撰寫專欄，您可以輕鬆的寫，如果當月的稿件出不來，我們會安排其他稿件上場。</p>
+<p><em>給網誌捐贈者：</em> 如果您沒時間寫專欄或投稿，沒關係，只要將您的網誌以 [創作共用的「姓名標示、非商業性、相同方式分享」授權] 並通知我們，我們會自動從中選取需要的文章進行編輯，放入適當的雜誌當中出刊。</p>
+<p><em>給文章投稿者：</em> 程式人雜誌非常歡迎您加入作者的行列，如果您想撰寫任何文章或投稿，請用 markdown 或 LibreOffice 編輯好您的稿件，並於每個月 25 日前投稿到<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 的檔案區，我們會盡可能將稿件編入隔月1號出版程式人雜誌當中，也歡迎您到社團中與我們一同討論。</p>
+<p>如果您要投稿給程式人雜誌，我們最希望的格式是採用 markdown 的格式撰寫，然後將所有檔按壓縮為 zip 上傳到社團檔案區給我們， 如您想學習 markdown 的撰寫出版方式，可以參考 [看影片學 markdown 編輯出版流程] 一文。</p>
+<p>如果您無法採用 markdown 的方式撰寫，也可以直接給我們您的稿件，像是 MS. Word 的 doc 檔或 LibreOffice 的 odt 檔都可以，我們 會將這些稿件改寫為 markdown 之後編入雜誌當中。</p>
+<h2 id="參與編輯">參與編輯</h2>
+<p>您也可以擔任程式人雜誌的編輯，甚至創造一個全新的公益雜誌，我們誠摯的邀請您加入「開放公益出版」的行列，如果您想擔任編輯或創造新雜誌，也歡迎到 <a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌社團</a> 來與我們討論相關事宜。</p>
+<h2 id="公益資訊">公益資訊</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">公益團體</th>
+<th align="left">聯絡資訊</th>
+<th align="left">服務對象</th>
+<th align="left">捐款帳號</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">財團法人羅慧夫顱顏基金會</td>
+<td align="left"><a href="http://www.nncf.org/" class="uri">http://www.nncf.org/</a> <br/> <script type="text/javascript">
+<!--
+h='&#110;&#110;&#x63;&#102;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#108;&#x79;&#110;&#110;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#108;&#x79;&#110;&#110;&#32;&#x61;&#116;&#32;&#110;&#110;&#x63;&#102;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;</noscript> <br/> 02-27190408分機 232</td>
+<td align="left">顱顏患者 (如唇顎裂、小耳症或其他罕見顱顏缺陷）</td>
+<td align="left">銀行：009 彰化銀行民生分行 <br/> 帳號：5234-01-41778-800</td>
+</tr>
+<tr class="even">
+<td align="left">社團法人台灣省兒童少年成長協會</td>
+<td align="left"><a href="http://www.cyga.org/" class="uri">http://www.cyga.org/</a> <br/> <script type="text/javascript">
+<!--
+h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x63;&#x79;&#x67;&#x61;&#x39;&#x39;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript> <br/> 04-23058005</td>
+<td align="left">單親、隔代教養.弱勢及一般家庭之兒童青少年</td>
+<td align="left">銀行：新光銀行 <br/> 戶名：台灣省兒童少年成長協會 <br/> 帳號：103-0912-10-000212-0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="footer">wikidown 電子書</div>
+</body>
+</html>
